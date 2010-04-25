@@ -1,0 +1,47 @@
+h1=. sIBL_GUI For Maya - 1.0.8
+
+h2=. Change Log
+
+h3. 1.0.8
+
+* Refactored the code into a "sIBL_GUI_For_Maya" module.
+* Updated the icons.
+
+h3. 1.0.7
+
+* Fixed a missing Procedure Call.
+
+h3. 1.0.6
+
+* Command Port Option Var is now correctly stored when you open the Command Port.
+
+h3. 1.0.5
+
+* Modified Command Port opening for Windows Vista x64 and Windows 7 x64 support.
+
+h3. 1.0.4
+
+* Corrected a problem related to "platform.system()" command on Windows.
+
+h3. 1.0.3
+
+* Compatibility with Mac Os X and Linux.
+
+h3. 1.0.2
+
+* Rolled Back Output Loader Script Name.
+
+h3. 1.0.1
+
+* Changed Output Loader Script Name.
+
+h3. 1.0.0
+
+* Initial Release of sIBL_GUI For Maya.
+
+h2=. About
+
+sIBL_GUI And sIBL_Framework by Thomas Mansencal - 2008 - 2010
+Copyright (C) 2008 - 2010 - Thomas Mansencal - "kelsolaar_fool@hotmail.com":mailto:kelsolaar_fool@hotmail.com 
+This Software Is Released Under Terms Of GNU GPL V3 License : "http://www.gnu.org/licenses/":http://www.gnu.org/licenses/ 
+"http://my.opera.com/KelSolaar/":http://my.opera.com/KelSolaar/

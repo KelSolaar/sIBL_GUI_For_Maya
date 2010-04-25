@@ -1,0 +1,15 @@
+- sIBL_GUI For Maya - Helper Script -
+
+- Installation -
+Extract "sIBL_GUI For Maya.rar" content into your Maya Preferences folder, for example on Windows : "C:\Documents and Settings\$USER\Mes documents\maya\2008\". Start Maya, and you should find a new "sIBL_GUI" shelf.
+
+- Usage -
+First Icon launch "sIBL_GUI For Maya Preferences" window where you define "sIBL_GUI" executable path and Remote Connection Port.
+Second Icon launch "sIBL_GUI".
+Third one execute the "Loader Script".
+
+- About -
+sIBL_GUI And sIBL_Framework by Thomas Mansencal - 2008 / 2009
+Copyright (C) 2008 / 2009 - Thomas Mansencal - kelsolaar_fool@hotmail.com
+This Software Is Released Under Terms Of GNU GPL V3 License : http://www.gnu.org/licenses/
+http://my.opera.com/KelSolaar/
