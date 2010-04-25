@@ -8,6 +8,9 @@ rm -rf ./releases/classic/*
 rm -rf ./releases/qt/*
 rm -rf ./releases/repository/*
 
+#! Change Log Gathering.
+cp ./releases/Change\ Log.html ./releases/repository/
+
 #! Classic Gathering.
 mkdir -p ./releases/classic/prefs/icons
 mkdir -p ./releases/classic/prefs/shelves
