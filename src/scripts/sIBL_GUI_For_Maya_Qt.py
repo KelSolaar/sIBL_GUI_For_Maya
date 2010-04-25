@@ -41,7 +41,7 @@
 ***		Windows, Linux, Mac Os X
 ***
 ***	Description :
-***		Maya sIBL_GUI Helper Script.
+***		Maya sIBL_GUI Helper Script For Maya 2011 And Higher.
 ***
 ***	Others :
 ***
@@ -135,7 +135,6 @@ def openCommandPort():
 
 	try:
 		cmds.commandPort( name = "127.0.0.1:" + str( cmds.intField( "sIBL_CommandPort_IntField", query = True, value = True ) ) )
-		cmds.commandPort( name = ":" + str( cmds.intField( "sIBL_CommandPort_IntField", query = True, value = True ) ) )
 	except :
 		mel.eval( "warning( \"sIBL_GUI | Command Port Is Already Open Or Can't Be Opened !\" );" )
 
@@ -146,18 +145,15 @@ def executableFileBrowser():
 	This Definition Provides A Browser.
 	'''
 
-	filePath = cmds.fileBrowserDialog( m = 0, fc = getExecutablePath, ft = '', an = 'Ok', om = 'Choose sIBL_GUI Executable' )
+	fileName = cmds.fileDialog2( ds = 2, fileFilter = "All Files (*.*)", fm = 1 )
+	fileName = fileName and fileName[0] or None
 
-def getExecutablePath( fileName, fileType ):
-	'''
-	This Definition Gets sIBL_GUI Executable Path.
-	'''
-
-	if fileName.endswith( "sIBL_GUI" ) or fileName.endswith( "sIBL_GUI.exe" ) :
-		cmds.textField( "sIBL_ExecutablePath_TextField", edit = True, text = fileName )
-		storeExecutablePathOptionVar()
-	else:
-		mel.eval( "warning( \"sIBL_GUI | Chosen Executable Path Is Invalid !\" );" )
+	if fileName :
+		if fileName.endswith( "sIBL_GUI" ) or fileName.endswith( "sIBL_GUI.exe" ) :
+			cmds.textField( "sIBL_ExecutablePath_TextField", edit = True, text = fileName )
+			storeExecutablePathOptionVar()
+		else:
+			mel.eval( "warning( \"sIBL_GUI | Chosen Executable Path Is Invalid !\" );" )
 
 def sIBL_CommandPortIntSlider_OnEdit():
 	'''
