@@ -4,6 +4,7 @@ h2=. Change Log
 
 h3. 1.0.8
 
+* Add Maya 2011 support.
 * Refactored the code into a "sIBL_GUI_For_Maya" module.
 * Updated the icons.
 
