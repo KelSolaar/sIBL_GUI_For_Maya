@@ -65,6 +65,11 @@ import platform
 #***********************************************************************************************
 LOADER_SCRIPTS_DIRECTORY = "HDRLabs/sIBL_GUI/io/loaderScripts/"
 LOADER_SCRIPT = "sIBL_Maya_Import.mel"
+HDRLABS_URL = "http://www.hdrlabs.com"
+WINDOWS_RELEASE_URL = "http://kelsolaar.hdrlabs.com/?dir=./sIBL_GUI/Repository/Builds/Windows"
+DARWIN_RELEASE_URL = "http://kelsolaar.hdrlabs.com/?dir=./sIBL_GUI/Repository/Builds/Darwin"
+LINUX_RELEASE_URL = "http://kelsolaar.hdrlabs.com/?dir=./sIBL_GUI/Repository/Builds/Linux"
+APPLICATION_THREAD_URL = "http://www.hdrlabs.com/cgi-bin/forum/YaBB.pl?num=1271609371"
 
 #***********************************************************************************************
 #***	Module Classes And Definitions
@@ -151,6 +156,9 @@ def executableFileBrowser():
 def getExecutablePath( fileName, fileType ):
 	'''
 	This Definition Gets sIBL_GUI Executable Path.
+
+	@param fileName: File Name. ( String )
+	@param fileType: File Type. ( String )
 	'''
 
 	if fileName.endswith( "sIBL_GUI" ) or fileName.endswith( "sIBL_GUI.exe" ) :
@@ -188,6 +196,42 @@ def sIBL_ExecutablePathTextField_OnEdit():
 	else:
 		mel.eval( "warning( \"sIBL_GUI | Chosen Executable Path Is Invalid !\" );" )
 
+def openUrl( url ) :
+	'''
+	This Definition Opens HDRLabs Thread.
+
+	@param url: Url To Open. ( String )
+	'''
+	cmds.launch( web = url )
+
+def getApplication_Button_OnClicked() :
+	'''
+	This Definition Opens Online Repository.
+	'''
+
+	if platform.system() == "Windows" or platform.system() == "Microsoft":
+		url = WINDOWS_RELEASE_URL
+	elif platform.system() == "Darwin":
+		url = DARWIN_RELEASE_URL
+	elif platform.system() == "Linux":
+		url = LINUX_RELEASE_URL
+
+	openUrl( url )
+
+def hdrlabs_Button_OnClicked():
+	'''
+	This Definition Opens HDRLabs Thread.
+	'''
+
+	openUrl( HDRLABS_URL )
+
+def applicationThread_Button_OnClicked() :
+	'''
+	This Definition Opens sIBL_GUI Thread.
+	'''
+
+	openUrl( APPLICATION_THREAD_URL )
+
 def sIBL_GUI_For_Maya_Preferences():
 	'''
 	This Definition Launchs sIBL_GUI For Maya Preferences.
@@ -198,23 +242,19 @@ def sIBL_GUI_For_Maya_Preferences():
 	if ( cmds.window( "sIBL_GUI_For_Maya_Windows", exists = True ) ):
 		cmds.deleteUI( "sIBL_GUI_For_Maya_Windows" )
 
-	if platform.system() == "Windows" or platform.system() == "Microsoft":
-		height = 120
-	elif platform.system() == "Darwin":
-		height = 132
-	elif platform.system() == "Linux":
-		height = 130
-
 	cmds.window( "sIBL_GUI_For_Maya_Windows",
-		title = "sIBL_GUI For Maya Preferences",
-		width = 315,
-		height = height,
-		sizeable = False,
+		title = "sIBL_GUI For Maya - Preferences",
+		width = 8,
+		height = 8,
+		rtf = True,
 		toolbox = True )
 
-	cmds.columnLayout( adjustableColumn = True )
-	cmds.frameLayout( label = "sIBL_GUI Executable Path", cll = False, li = 4, borderStyle = "etchedOut", mh = 4, mw = 4 )
-	cmds.rowColumnLayout( "executablePathRowLayout", numberOfColumns = 2, cw = ( ( 1, 256 ), ( 2, 32 ) ), cs = ( ( 2, 8 ) ) )
+	horizontalSpacing = 8
+	verticalSpacing = 16
+
+	cmds.columnLayout( adjustableColumn = True, rowSpacing = verticalSpacing, columnOffset = ["both", horizontalSpacing ] )
+	cmds.frameLayout( label = "sIBL_GUI Executable Path", labelAlign = "center", cll = False, li = 4, borderStyle = "etchedOut", mh = 4, mw = 4 )
+	cmds.rowLayout( "executablePathRowLayout", numberOfColumns = 2, adjustableColumn = 1, columnAlign2 = ["center", "center"], columnWidth = [2, 25], columnAttach = [( 1, "both", horizontalSpacing ), ( 2, "both", horizontalSpacing )] )
 	cmds.textField( "sIBL_ExecutablePath_TextField", cc = "sIBL_GUI_For_Maya.sIBL_ExecutablePathTextField_OnEdit()" )
 	cmds.button( "fileBrowser_Button", label = "...", al = "center", command = "sIBL_GUI_For_Maya.executableFileBrowser()" )
 	cmds.setParent( upLevel = True )
@@ -224,11 +264,19 @@ def sIBL_GUI_For_Maya_Preferences():
 	if sIBL_GUI_Executable_Path != 0:
 		cmds.textField( "sIBL_ExecutablePath_TextField", edit = True, text = sIBL_GUI_Executable_Path )
 
-	cmds.frameLayout( label = "sIBL_GUI Command Port", cll = False, li = 4, borderStyle = "etchedOut", mh = 4, mw = 4 )
-	cmds.rowColumnLayout( "commandPortRowLayout", numberOfColumns = 3, cw = ( ( 1, 40 ), ( 2, 140 ) ), cs = ( ( 2, 8 ), ( 3, 8 ) ) )
+	cmds.frameLayout( label = "sIBL_GUI Command Port", labelAlign = "center", cll = False, li = 4, borderStyle = "etchedOut", mh = 4, mw = 4 )
+	cmds.rowLayout( "commandPortRowLayout", numberOfColumns = 3, adjustableColumn = 2, columnAlign3 = ["center", "center", "center"], columnAttach = [( 1, "both", horizontalSpacing ), ( 2, "both", horizontalSpacing ), ( 3, "both", horizontalSpacing )] )
 	cmds.intField( "sIBL_CommandPort_IntField", minValue = 0, maxValue = 65535, value = 2048, cc = "sIBL_GUI_For_Maya.sIBL_CommandPortIntField_OnEdit()" )
 	cmds.intSlider( "sIBL_CommandPort_IntSlider", min = 0, max = 65535 , value = cmds.intField( "sIBL_CommandPort_IntField", query = True, value = True ) , step = 1, cc = "sIBL_GUI_For_Maya.sIBL_CommandPortIntSlider_OnEdit()" )
 	cmds.button( "commandPort_Button", label = "Open Port", al = "center", command = "sIBL_GUI_For_Maya.openCommandPort()" )
+	cmds.setParent( upLevel = True )
+	cmds.setParent( upLevel = True )
+
+	cmds.frameLayout( label = "Online", labelAlign = "center", cll = False, li = 4, borderStyle = "etchedOut", mh = 4, mw = 4 )
+	cmds.rowLayout( "onlineRowLayout", numberOfColumns = 3, adjustableColumn = 3, columnAlign3 = ["center", "center", "center"], columnAttach = [( 1, "both", horizontalSpacing ), ( 2, "both", horizontalSpacing ), ( 3, "both", horizontalSpacing )] )
+	cmds.button( "getApplication_Button", label = "Get sIBL_GUI", al = "center", command = "sIBL_GUI_For_Maya.getApplication_Button_OnClicked()" )
+	cmds.button( "hdrlabs_Button", label = "Visit HDRLabs", al = "center", command = "sIBL_GUI_For_Maya.hdrlabs_Button_OnClicked()" )
+	cmds.button( "applicationThread_Button", label = "Visit sIBL_GUI Thread", al = "right", command = "sIBL_GUI_For_Maya.applicationThread_Button_OnClicked()" )
 	cmds.setParent( upLevel = True )
 	cmds.setParent( upLevel = True )
 

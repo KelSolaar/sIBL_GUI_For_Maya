@@ -1,6 +1,12 @@
-h1=. sIBL_GUI For Maya - 1.0.8
+h1=. sIBL_GUI For Maya - 1.0.9
 
 h2=. Change Log
+
+h3. 1.0.9
+
+* Added online links buttons.
+* Added sIBL_GUI Logo for Qt helper script version.
+* Ui updated.
 
 h3. 1.0.8
 

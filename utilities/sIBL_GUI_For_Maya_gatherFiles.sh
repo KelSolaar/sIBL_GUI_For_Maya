@@ -25,7 +25,7 @@ zip -r ../repository/sIBL_GUI_For_Maya.zip .
 #! Reaching Original Directory.
 cd ../../
 
-#! Classic Gathering.
+#! Qt Gathering.
 mkdir -p ./releases/qt/prefs/icons
 mkdir -p ./releases/qt/prefs/shelves
 mkdir ./releases/qt/scripts
