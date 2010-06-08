@@ -85,7 +85,7 @@ class Environment( object ):
 
 def getSystemApplicationDatasDirectory():
 	'''
-	This Definition Gets The User Application Datas Directory.
+	This Definition Gets The System Application Datas Directory.
 
 	@return: User Application Datas Directory. ( String )
 	'''
@@ -133,11 +133,11 @@ def executableFileBrowser():
 	This Definition Provides A Browser.
 	'''
 
-	fileName = cmds.fileDialog2( ds = 2, fileFilter = "All Files (*.*)", fm = 1 )
+	fileName = cmds.fileDialog2( ds = 2, fileFilter = "All Files (*.*)", fm = ( not platform.system() == "Darwin" and 1 or 3 ) )
 	fileName = fileName and fileName[0] or None
 
 	if fileName :
-		if fileName.endswith( "sIBL_GUI" ) or fileName.endswith( "sIBL_GUI.exe" ) :
+		if fileName.endswith( "sIBL_GUI.exe" ) or fileName.endswith( "sIBL_GUI.app" ) or fileName.endswith( "sIBL_GUI" ) :
 			cmds.textField( "sIBL_ExecutablePath_TextField", edit = True, text = fileName )
 			storeExecutablePathOptionVar()
 		else:
@@ -167,7 +167,7 @@ def sIBL_ExecutablePathTextField_OnEdit():
 	'''
 
 	textFieldContent = cmds.textField( "sIBL_ExecutablePath_TextField", query = True, text = True )
-	if textFieldContent.endswith( "sIBL_GUI" ) or textFieldContent.endswith( "sIBL_GUI.exe" ) :
+	if textFieldContent.endswith( "sIBL_GUI.exe" ) or textFieldContent.endswith( "sIBL_GUI.app" ) or  textFieldContent.endswith( "sIBL_GUI" ):
 		storeExecutablePathOptionVar()
 	else:
 		mel.eval( "warning( \"sIBL_GUI | Chosen Executable Path Is Invalid !\" );" )
@@ -278,9 +278,11 @@ def sIBL_GUI_For_Maya_Launch():
 
 	sIBL_GUI_Executable_Path = cmds.optionVar( q = "sIBL_GUI_Executable_Path" )
 	if sIBL_GUI_Executable_Path != 0:
-		if platform.system() == "Windows":
+		if platform.system() == "Windows" or platform.system() == "Microsoft" :
 			os.system( "start /D" + "\"" + os.path.dirname( sIBL_GUI_Executable_Path ) + "\"" + " " + sIBL_GUI_Executable_Path.replace( " ", "\" \"" ) )
-		else :
+		elif platform.system() == "Darwin":
+			os.system( "open -a " + sIBL_GUI_Executable_Path )
+		elif platform.system() == "Linux":
 			os.system( "\"" + sIBL_GUI_Executable_Path + "\" &" )
 	else:
 		mel.eval( "warning( \"sIBL_GUI | No sIBL_GUI Executable Path Defined !\" );" )

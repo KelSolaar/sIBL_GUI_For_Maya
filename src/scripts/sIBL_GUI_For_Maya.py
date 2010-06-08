@@ -85,7 +85,7 @@ class Environment( object ):
 
 def getSystemApplicationDatasDirectory():
 	'''
-	This Definition Gets The User Application Datas Directory.
+	This Definition Gets The System Application Datas Directory.
 
 	@return: User Application Datas Directory. ( String )
 	'''
@@ -134,7 +134,7 @@ def executableFileBrowser():
 	This Definition Provides A Browser.
 	'''
 
-	filePath = cmds.fileBrowserDialog( m = 0, fc = getExecutablePath, ft = '', an = 'Ok', om = 'Choose sIBL_GUI Executable' )
+	filePath = cmds.fileBrowserDialog( m = 0, fc = getExecutablePath, ft = "", an = "sIBL_GUI_Executable", wt = "Choose sIBL_GUI Executable" )
 
 def getExecutablePath( fileName, fileType ):
 	'''
@@ -144,7 +144,13 @@ def getExecutablePath( fileName, fileType ):
 	@param fileType: File Type. ( String )
 	'''
 
-	if fileName.endswith( "sIBL_GUI" ) or fileName.endswith( "sIBL_GUI.exe" ) :
+	if platform.system() == "Darwin":
+		if "sIBL_GUI.app" in fileName :
+			fileName = "sIBL_GUI.app" in fileName and fileName.split( "sIBL_GUI.app" )[0] + "sIBL_GUI.app"
+		else :
+			mel.eval( "warning( \"sIBL_GUI | On Mac Os X, You Need To Choose 'sIBL_GUI' File Inside 'sIBL_GUI.app/Contents/MacOS' Folder, The Helper Script Will Then Construct The Path Itself !\" );" )
+
+	if fileName.endswith( "sIBL_GUI.exe" ) or fileName.endswith( "sIBL_GUI.app" ) or fileName.endswith( "sIBL_GUI" ) :
 		cmds.textField( "sIBL_ExecutablePath_TextField", edit = True, text = fileName )
 		storeExecutablePathOptionVar()
 	else:
@@ -174,7 +180,7 @@ def sIBL_ExecutablePathTextField_OnEdit():
 	'''
 
 	textFieldContent = cmds.textField( "sIBL_ExecutablePath_TextField", query = True, text = True )
-	if textFieldContent.endswith( "sIBL_GUI" ) or textFieldContent.endswith( "sIBL_GUI.exe" ) :
+	if textFieldContent.endswith( "sIBL_GUI.exe" ) or textFieldContent.endswith( "sIBL_GUI.app" ) or  textFieldContent.endswith( "sIBL_GUI" ):
 		storeExecutablePathOptionVar()
 	else:
 		mel.eval( "warning( \"sIBL_GUI | Chosen Executable Path Is Invalid !\" );" )
@@ -277,9 +283,11 @@ def sIBL_GUI_For_Maya_Launch():
 
 	sIBL_GUI_Executable_Path = cmds.optionVar( q = "sIBL_GUI_Executable_Path" )
 	if sIBL_GUI_Executable_Path != 0:
-		if platform.system() == "Windows":
+		if platform.system() == "Windows" or platform.system() == "Microsoft" :
 			os.system( "start /D" + "\"" + os.path.dirname( sIBL_GUI_Executable_Path ) + "\"" + " " + sIBL_GUI_Executable_Path.replace( " ", "\" \"" ) )
-		else :
+		elif platform.system() == "Darwin":
+			os.system( "open -a " + sIBL_GUI_Executable_Path )
+		elif platform.system() == "Linux":
 			os.system( "\"" + sIBL_GUI_Executable_Path + "\" &" )
 	else:
 		mel.eval( "warning( \"sIBL_GUI | No sIBL_GUI Executable Path Defined !\" );" )

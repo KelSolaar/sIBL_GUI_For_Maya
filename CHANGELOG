@@ -1,6 +1,10 @@
-h1=. sIBL_GUI For Maya - 1.1.0
+h1=. sIBL_GUI For Maya - 1.1.1
 
 h2=. Change Log
+
+h3. 1.1.1
+
+* Updated code to directly support "sIBL_GUI.app" as sIBL_GUI executable path in Mac Os X.
 
 h3. 1.1.0
 
