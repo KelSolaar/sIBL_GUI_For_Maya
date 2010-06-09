@@ -228,10 +228,10 @@ def sIBL_GUI_For_Maya_Preferences():
 
 	cmds.windowPref( enableAll = False )
 
-	if ( cmds.window( "sIBL_GUI_For_Maya_Windows", exists = True ) ):
-		cmds.deleteUI( "sIBL_GUI_For_Maya_Windows" )
+	if ( cmds.window( "sIBL_GUI_For_Maya_Window", exists = True ) ):
+		cmds.deleteUI( "sIBL_GUI_For_Maya_Window" )
 
-	cmds.window( "sIBL_GUI_For_Maya_Windows",
+	cmds.window( "sIBL_GUI_For_Maya_Window",
 		title = "sIBL_GUI For Maya - Preferences",
 		width = 8,
 		height = 8,
@@ -273,7 +273,7 @@ def sIBL_GUI_For_Maya_Preferences():
 	if sIBL_GUI_Command_Port != 0:
 		cmds.intField( "sIBL_CommandPort_IntField", edit = True, value = sIBL_GUI_Command_Port )
 
-	cmds.showWindow( "sIBL_GUI_For_Maya_Windows" )
+	cmds.showWindow( "sIBL_GUI_For_Maya_Window" )
 	cmds.windowPref( enableAll = True )
 
 def sIBL_GUI_For_Maya_Launch():
