@@ -8,6 +8,7 @@ On Maya 2010 and under :
 	
 	commandPort -n ( "127.0.0.1:"  + `optionVar -q "sIBL_GUI_Command_Port"` );
 	commandPort -n ( ":" + `optionVar -q "sIBL_GUI_Command_Port"`); 
+
 On Maya 2011 and higher :
 
 	commandPort -n ( "127.0.0.1:"  + `optionVar -q "sIBL_GUI_Command_Port"` );
@@ -18,7 +19,7 @@ Second Icon launch "sIBL_GUI".
 Third one execute the "Loader Script".
 
 - About -
-sIBL_GUI by Thomas Mansencal - 2008 - 2010
-Copyright (C) 2008 - 2010 - Thomas Mansencal - kelsolaar_fool@hotmail.com
+sIBL_GUI by Thomas Mansencal - 2008 - 2011
+Copyright (C) 2008 - 2011 - Thomas Mansencal - thomas.mansencal@gmail.com
 This Software Is Released Under Terms Of GNU GPL V3 License : http://www.gnu.org/licenses/
-http://my.opera.com/KelSolaar/
+http://www.thomasmansencal.com/
