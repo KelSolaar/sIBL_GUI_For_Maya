@@ -10,7 +10,7 @@
 #***********************************************************************************************
 #
 # If You Are A HDRI Ressources Vendor And Are Interested In Making Your Sets SmartIBL Compliant:
-# Please Contact Us At HDRLabs :
+# Please Contact Us At HDRLabs:
 # Christian Bloch - blochi@edenfx.com
 # Thomas Mansencal - kelsolaar_fool@hotmail.com
 #
@@ -20,13 +20,13 @@
 ************************************************************************************************
 ***	sIBL_GUI_For_Maya.py
 ***
-***	Platform :
+***	Platform:
 ***		Windows, Linux, Mac Os X
 ***
-***	Description :
+***	Description:
 ***		Maya sIBL_GUI Helper Script.
 ***
-***	Others :
+***	Others:
 ***
 ************************************************************************************************
 '''
@@ -79,7 +79,7 @@ class Environment( object ):
 		@return: Variable Path. ( String )
 		'''
 
-		if self._variable :
+		if self._variable:
 			for param in os.environ.keys():
 				if( self._variable == param ): return os.environ[param]
 
@@ -90,15 +90,15 @@ def getSystemApplicationDatasDirectory():
 	@return: User Application Datas Directory. ( String )
 	'''
 
-	if platform.system() == "Windows" or platform.system() == "Microsoft" :
+	if platform.system() == "Windows" or platform.system() == "Microsoft":
 		environmentVariable = Environment( "APPDATA" )
 		return environmentVariable.getPath()
 
-	elif platform.system() == "Darwin" :
+	elif platform.system() == "Darwin":
 		environmentVariable = Environment( "HOME" )
 		return os.path.join( environmentVariable.getPath(), "Library/Preferences" )
 
-	elif platform.system() == "Linux" :
+	elif platform.system() == "Linux":
 		environmentVariable = Environment( "HOME" )
 		return environmentVariable.getPath()
 
@@ -124,7 +124,7 @@ def openCommandPort():
 	try:
 		cmds.commandPort( name = "127.0.0.1:" + str( cmds.intField( "sIBL_CommandPort_IntField", query = True, value = True ) ) )
 		cmds.commandPort( name = ":" + str( cmds.intField( "sIBL_CommandPort_IntField", query = True, value = True ) ) )
-	except :
+	except:
 		mel.eval( "warning( \"sIBL_GUI | Command Port Is Already Open Or Can't Be Opened !\" );" )
 
 	storeCommandPortOptionVar()
@@ -145,12 +145,12 @@ def getExecutablePath( fileName, fileType ):
 	'''
 
 	if platform.system() == "Darwin":
-		if "sIBL_GUI.app" in fileName :
+		if "sIBL_GUI.app" in fileName:
 			fileName = "sIBL_GUI.app" in fileName and fileName.split( "sIBL_GUI.app" )[0] + "sIBL_GUI.app"
-		else :
+		else:
 			mel.eval( "warning( \"sIBL_GUI | On Mac Os X, You Need To Choose 'sIBL_GUI' File Inside 'sIBL_GUI.app/Contents/MacOS' Folder, The Helper Script Will Then Construct The Path Itself !\" );" )
 
-	if fileName.endswith( "sIBL_GUI.exe" ) or fileName.endswith( "sIBL_GUI.app" ) or fileName.endswith( "sIBL_GUI" ) :
+	if fileName.endswith( "sIBL_GUI.exe" ) or fileName.endswith( "sIBL_GUI.app" ) or fileName.endswith( "sIBL_GUI" ):
 		cmds.textField( "sIBL_ExecutablePath_TextField", edit = True, text = fileName )
 		storeExecutablePathOptionVar()
 	else:
@@ -185,7 +185,7 @@ def sIBL_ExecutablePathTextField_OnEdit():
 	else:
 		mel.eval( "warning( \"sIBL_GUI | Chosen Executable Path Is Invalid !\" );" )
 
-def openUrl( url ) :
+def openUrl( url ):
 	'''
 	This Definition Opens HDRLabs Thread.
 
@@ -193,7 +193,7 @@ def openUrl( url ) :
 	'''
 	cmds.launch( web = url )
 
-def getApplication_Button_OnClicked() :
+def getApplication_Button_OnClicked():
 	'''
 	This Definition Opens Online Repository.
 	'''
@@ -214,7 +214,7 @@ def hdrlabs_Button_OnClicked():
 
 	openUrl( HDRLABS_URL )
 
-def applicationThread_Button_OnClicked() :
+def applicationThread_Button_OnClicked():
 	'''
 	This Definition Opens sIBL_GUI Thread.
 	'''
@@ -283,7 +283,7 @@ def sIBL_GUI_For_Maya_Launch():
 
 	sIBL_GUI_Executable_Path = cmds.optionVar( q = "sIBL_GUI_Executable_Path" )
 	if sIBL_GUI_Executable_Path != 0:
-		if platform.system() == "Windows" or platform.system() == "Microsoft" :
+		if platform.system() == "Windows" or platform.system() == "Microsoft":
 			os.system( "start /D" + "\"" + os.path.dirname( sIBL_GUI_Executable_Path ) + "\"" + " " + sIBL_GUI_Executable_Path.replace( " ", "\" \"" ) )
 		elif platform.system() == "Darwin":
 			os.system( "open -a " + sIBL_GUI_Executable_Path )
@@ -299,13 +299,13 @@ def sIBL_GUI_ExecuteLoaderScript():
 
 	systemApplicationDatasDirectory = getSystemApplicationDatasDirectory()
 
-	if systemApplicationDatasDirectory :
+	if systemApplicationDatasDirectory:
 		loaderScript = os.path.normpath( os.path.join( systemApplicationDatasDirectory, LOADER_SCRIPTS_DIRECTORY, LOADER_SCRIPT ) )
 
-		if platform.system() == "Windows" or platform.system() == "Microsoft" :
+		if platform.system() == "Windows" or platform.system() == "Microsoft":
 			loaderScript = loaderScript.replace( "\\", "\\\\" )
 
-		if os.path.exists( loaderScript ) :
+		if os.path.exists( loaderScript ):
 			mel.eval( "source \"" + loaderScript + "\"" )
 		else:
 			mel.eval( "warning( \"sIBL_GUI | No Maya Loader Script Found !\" );" )
