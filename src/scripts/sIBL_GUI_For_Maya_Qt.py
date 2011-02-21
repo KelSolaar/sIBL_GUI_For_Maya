@@ -124,7 +124,7 @@ def openCommandPort():
 	try:
 		cmds.commandPort( name = "127.0.0.1:" + str( cmds.intField( "sIBL_CommandPort_IntField", query = True, value = True ) ) )
 	except:
-		mel.eval( "warning( \"sIBL_GUI | Command Port Is Already Open Or Can't Be Opened !\" );" )
+		mel.eval( "warning( \"sIBL_GUI | Command Port Is Already Open Or Can't Be Opened!\" );" )
 
 	storeCommandPortOptionVar()
 
@@ -141,7 +141,7 @@ def executableFileBrowser():
 			cmds.textField( "sIBL_ExecutablePath_TextField", edit = True, text = fileName )
 			storeExecutablePathOptionVar()
 		else:
-			mel.eval( "warning( \"sIBL_GUI | Chosen Executable Path Is Invalid !\" );" )
+			mel.eval( "warning( \"sIBL_GUI | Chosen Executable Path Is Invalid!\" );" )
 
 def sIBL_CommandPortIntSlider_OnEdit():
 	'''
@@ -170,7 +170,7 @@ def sIBL_ExecutablePathTextField_OnEdit():
 	if textFieldContent.endswith( "sIBL_GUI.exe" ) or textFieldContent.endswith( "sIBL_GUI.app" ) or  textFieldContent.endswith( "sIBL_GUI" ):
 		storeExecutablePathOptionVar()
 	else:
-		mel.eval( "warning( \"sIBL_GUI | Chosen Executable Path Is Invalid !\" );" )
+		mel.eval( "warning( \"sIBL_GUI | Chosen Executable Path Is Invalid!\" );" )
 
 def openUrl( url ):
 	'''
@@ -285,7 +285,7 @@ def sIBL_GUI_For_Maya_Launch():
 		elif platform.system() == "Linux":
 			os.system( "\"" + sIBL_GUI_Executable_Path + "\" &" )
 	else:
-		mel.eval( "warning( \"sIBL_GUI | No sIBL_GUI Executable Path Defined !\" );" )
+		mel.eval( "warning( \"sIBL_GUI | No sIBL_GUI Executable Path Defined!\" );" )
 
 def sIBL_GUI_ExecuteLoaderScript():
 	'''
@@ -303,7 +303,7 @@ def sIBL_GUI_ExecuteLoaderScript():
 		if os.path.exists( loaderScript ):
 			mel.eval( "source \"" + loaderScript + "\"" )
 		else:
-			mel.eval( "warning( \"sIBL_GUI | No Maya Loader Script Found !\" );" )
+			mel.eval( "warning( \"sIBL_GUI | No Maya Loader Script Found!\" );" )
 
 #***********************************************************************************************
 #***	Python End
