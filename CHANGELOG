@@ -1,6 +1,10 @@
-h1=. sIBL_GUI For Maya - 1.1.1
+h1=. sIBL_GUI For Maya - 1.1.2
 
 h2=. Change Log
+
+h3. 1.1.2
+
+* Added Smart Ibl nodes removal shelf button.
 
 h3. 1.1.1
 

@@ -3,7 +3,7 @@
 
 #***********************************************************************************************
 #
-# Copyright (C) 2008 - 2010 - Thomas Mansencal - kelsolaar_fool@hotmail.com
+# Copyright (C) 2008 - 2011 - Thomas Mansencal - thomas.mansencal@gmail.com
 #
 #***********************************************************************************************
 
@@ -12,7 +12,7 @@
 # If You Are A HDRI Ressources Vendor And Are Interested In Making Your Sets SmartIBL Compliant:
 # Please Contact Us At HDRLabs:
 # Christian Bloch - blochi@edenfx.com
-# Thomas Mansencal - kelsolaar_fool@hotmail.com
+# Thomas Mansencal - thomas.mansencal@gmail.com
 #
 #***********************************************************************************************
 
@@ -24,7 +24,7 @@
 ***		Windows, Linux, Mac Os X
 ***
 ***	Description:
-***		Maya sIBL_GUI Helper Script.
+***		Maya sIBL_GUI Helper Script For Maya 2011 And Higher.
 ***
 ***	Others:
 ***
@@ -38,10 +38,11 @@
 #***********************************************************************************************
 #***	External Imports
 #***********************************************************************************************
-import os
 import maya.cmds as cmds
 import maya.mel as mel
+import os
 import platform
+import re
 
 #***********************************************************************************************
 #***	Overall Variables
@@ -221,7 +222,7 @@ def applicationThread_Button_OnClicked():
 
 	openUrl( APPLICATION_THREAD_URL )
 
-def sIBL_GUI_For_Maya_Preferences():
+def openPreferences():
 	'''
 	This Definition Launchs sIBL_GUI For Maya Preferences.
 	'''
@@ -276,7 +277,7 @@ def sIBL_GUI_For_Maya_Preferences():
 	cmds.showWindow( "sIBL_GUI_For_Maya_Window" )
 	cmds.windowPref( enableAll = True )
 
-def sIBL_GUI_For_Maya_Launch():
+def launchApplication():
 	'''
 	This Definition Launchs sIBL_GUI.
 	'''
@@ -292,7 +293,7 @@ def sIBL_GUI_For_Maya_Launch():
 	else:
 		mel.eval( "warning( \"sIBL_GUI | No sIBL_GUI Executable Path Defined!\" );" )
 
-def sIBL_GUI_ExecuteLoaderScript():
+def executeLoaderScript():
 	'''
 	This Definition Executes sIBL_GUI Maya Loader Script.
 	'''
@@ -309,6 +310,36 @@ def sIBL_GUI_ExecuteLoaderScript():
 			mel.eval( "source \"" + loaderScript + "\"" )
 		else:
 			mel.eval( "warning( \"sIBL_GUI | No Maya Loader Script Found!\" );" )
+
+def deleteSmartIblNodes():
+	'''
+	This Definition Deletes Smart Ibl And Lightsmith Lights Nodes.
+	'''
+
+	nodes = []
+	selection = cmds.ls(sl = True, l = True)
+	if selection:
+		prefixes = []
+		for node in selection:
+			relatives = [node]
+			relatives.extend(cmds.listRelatives(node, f = True, ad = True))
+			for relative in relatives:
+				if re.search("\w*_Root$", relative):
+					if relative.replace("_Root", "_Support").split("|")[-1] in cmds.listRelatives(relative, ad = True):
+						prefixes.append(relative.replace("_Root", "").split("|")[-1])
+		for prefix in prefixes:
+			userChoice = cmds.confirmDialog(title="sIBL_GUI", message="Nodes With Following Prefix : '%s' Are Planned For Deletion! Would You Like To Proceed?" % prefix, button=["Yes","No"], defaultButton="Yes", cancelButton="No", dismissString="No")
+			if userChoice == "Yes":
+				nodes.extend(sorted(cmds.ls(prefix + "*", l = True)))
+	else:
+		userChoice = cmds.confirmDialog(title="sIBL_GUI", message="Smart Ibl Nodes Are Planned For Deletion! Would You Like To Proceed?", button=["Yes","No"], defaultButton="Yes", cancelButton="No", dismissString="No")
+		if userChoice == "Yes":
+			nodes.extend(sorted(cmds.ls("sIBL*", l = True)))
+	
+	for node in nodes:
+		if cmds.objExists(node):
+			print("sIBL_GUI | Deleting Node: '%s'!" % node)
+			cmds.delete(node)
 
 #***********************************************************************************************
 #***	Python End
