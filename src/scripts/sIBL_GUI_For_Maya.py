@@ -16,7 +16,7 @@
 #
 #***********************************************************************************************
 
-'''
+"""
 ************************************************************************************************
 ***	sIBL_GUI_For_Maya.py
 ***
@@ -29,7 +29,7 @@
 ***	Others:
 ***
 ************************************************************************************************
-'''
+"""
 
 #***********************************************************************************************
 #***	Python Begin
@@ -59,37 +59,37 @@ APPLICATION_THREAD_URL = "http://www.hdrlabs.com/cgi-bin/forum/YaBB.pl?num=12716
 #***	Module Classes And Definitions
 #***********************************************************************************************
 class Environment( object ):
-	'''
+	"""
 	This Class Provides Methods To Manipulate Environment Variables.
-	'''
+	"""
 
 	def __init__( self, variable = None ):
-		'''
+		"""
 		This Method Initializes The Class.
 
 		@param variable: Variable To Manipulate. ( String )
-		'''
+		"""
 
 		# --- Setting Class Attributes. ---
 		self._variable = variable
 
 	def getPath( self ):
-		'''
+		"""
 		This Method Gets The Chosen Environment Variable Path As A String.
 
 		@return: Variable Path. ( String )
-		'''
+		"""
 
 		if self._variable:
 			for param in os.environ.keys():
 				if( self._variable == param ): return os.environ[param]
 
 def getSystemApplicationDatasDirectory():
-	'''
+	"""
 	This Definition Gets The System Application Datas Directory.
 
 	@return: User Application Datas Directory. ( String )
-	'''
+	"""
 
 	if platform.system() == "Windows" or platform.system() == "Microsoft":
 		environmentVariable = Environment( "APPDATA" )
@@ -104,23 +104,23 @@ def getSystemApplicationDatasDirectory():
 		return environmentVariable.getPath()
 
 def storeCommandPortOptionVar():
-	'''
+	"""
 	This Definition Stores The Command Port In An Option Var.
-	'''
+	"""
 
 	cmds.optionVar( iv = ( "sIBL_GUI_Command_Port", cmds.intField( "sIBL_CommandPort_IntField", query = True, value = True ) ) )
 
 def storeExecutablePathOptionVar():
-	'''
+	"""
 	This Definition Stores sIBL_GUI Executable Path In An Option Var.
-	'''
+	"""
 
 	cmds.optionVar( sv = ( "sIBL_GUI_Executable_Path", cmds.textField( "sIBL_ExecutablePath_TextField", query = True, text = True ) ) )
 
 def openCommandPort():
-	'''
+	"""
 	This Definition Opens The Command Port.
-	'''
+	"""
 
 	try:
 		cmds.commandPort( name = "127.0.0.1:" + str( cmds.intField( "sIBL_CommandPort_IntField", query = True, value = True ) ) )
@@ -131,19 +131,19 @@ def openCommandPort():
 	storeCommandPortOptionVar()
 
 def executableFileBrowser():
-	'''
+	"""
 	This Definition Provides A Browser.
-	'''
+	"""
 
 	filePath = cmds.fileBrowserDialog( m = 0, fc = getExecutablePath, ft = "", an = "sIBL_GUI_Executable", wt = "Choose sIBL_GUI Executable" )
 
 def getExecutablePath( fileName, fileType ):
-	'''
+	"""
 	This Definition Gets sIBL_GUI Executable Path.
 
 	@param fileName: File Name. ( String )
 	@param fileType: File Type. ( String )
-	'''
+	"""
 
 	if platform.system() == "Darwin":
 		if "sIBL_GUI.app" in fileName:
@@ -158,27 +158,27 @@ def getExecutablePath( fileName, fileType ):
 		mel.eval( "warning( \"sIBL_GUI | Chosen Executable Path Is Invalid!\" );" )
 
 def sIBL_CommandPortIntSlider_OnEdit():
-	'''
+	"""
 	This Definition Is Triggered By sIBL_CommandPortIntSlider Edit.
-	'''
+	"""
 
 	cmds.intField( "sIBL_CommandPort_IntField", edit = True, value = cmds.intSlider( "sIBL_CommandPort_IntSlider", query = True, value = True ) )
 
 	storeCommandPortOptionVar()
 
 def sIBL_CommandPortIntField_OnEdit():
-	'''
+	"""
 	This Definition Is Triggered By sIBL_CommandPortIntField Edit.
-	'''
+	"""
 
 	cmds.intSlider( "sIBL_CommandPort_IntSlider", edit = True, value = cmds.intField( "sIBL_CommandPort_IntField", query = True, value = True ) )
 
 	storeCommandPortOptionVar()
 
 def sIBL_ExecutablePathTextField_OnEdit():
-	'''
+	"""
 	This Definition Is Triggered By sIBL_ExecutablePathTextField Edit.
-	'''
+	"""
 
 	textFieldContent = cmds.textField( "sIBL_ExecutablePath_TextField", query = True, text = True )
 	if textFieldContent.endswith( "sIBL_GUI.exe" ) or textFieldContent.endswith( "sIBL_GUI.app" ) or  textFieldContent.endswith( "sIBL_GUI" ):
@@ -187,17 +187,17 @@ def sIBL_ExecutablePathTextField_OnEdit():
 		mel.eval( "warning( \"sIBL_GUI | Chosen Executable Path Is Invalid!\" );" )
 
 def openUrl( url ):
-	'''
+	"""
 	This Definition Opens HDRLabs Thread.
 
 	@param url: Url To Open. ( String )
-	'''
+	"""
 	cmds.launch( web = url )
 
 def getApplication_Button_OnClicked():
-	'''
+	"""
 	This Definition Opens Online Repository.
-	'''
+	"""
 
 	if platform.system() == "Windows" or platform.system() == "Microsoft":
 		url = WINDOWS_RELEASE_URL
@@ -209,23 +209,23 @@ def getApplication_Button_OnClicked():
 	openUrl( url )
 
 def hdrlabs_Button_OnClicked():
-	'''
+	"""
 	This Definition Opens HDRLabs Thread.
-	'''
+	"""
 
 	openUrl( HDRLABS_URL )
 
 def applicationThread_Button_OnClicked():
-	'''
+	"""
 	This Definition Opens sIBL_GUI Thread.
-	'''
+	"""
 
 	openUrl( APPLICATION_THREAD_URL )
 
 def openPreferences():
-	'''
+	"""
 	This Definition Launchs sIBL_GUI For Maya Preferences.
-	'''
+	"""
 
 	cmds.windowPref( enableAll = False )
 
@@ -278,9 +278,9 @@ def openPreferences():
 	cmds.windowPref( enableAll = True )
 
 def launchApplication():
-	'''
+	"""
 	This Definition Launchs sIBL_GUI.
-	'''
+	"""
 
 	sIBL_GUI_Executable_Path = cmds.optionVar( q = "sIBL_GUI_Executable_Path" )
 	if sIBL_GUI_Executable_Path != 0:
@@ -294,9 +294,9 @@ def launchApplication():
 		mel.eval( "warning( \"sIBL_GUI | No sIBL_GUI Executable Path Defined!\" );" )
 
 def executeLoaderScript():
-	'''
+	"""
 	This Definition Executes sIBL_GUI Maya Loader Script.
-	'''
+	"""
 
 	systemApplicationDatasDirectory = getSystemApplicationDatasDirectory()
 
@@ -312,9 +312,9 @@ def executeLoaderScript():
 			mel.eval( "warning( \"sIBL_GUI | No Maya Loader Script Found!\" );" )
 
 def deleteSmartIblNodes():
-	'''
+	"""
 	This Definition Deletes Smart Ibl And Lightsmith Lights Nodes.
-	'''
+	"""
 
 	nodes = []
 	selection = cmds.ls(sl = True, l = True)
