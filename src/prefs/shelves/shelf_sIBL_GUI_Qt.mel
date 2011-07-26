@@ -13,19 +13,19 @@ global proc shelf_sIBL_GUI () {
         -visible 1
         -preventOverride 0
         -enableBackground 0
-        -align "center" 
-        -label "sIBL_GUI  For Maya Prefences" 
+        -align "center"
+        -label "sIBL_GUI  For Maya Prefences"
         -labelOffset 0
-        -font "tinyBoldLabelFont" 
-        -overlayLabelColor 0.8 0.8 0.8 
-        -overlayLabelBackColor 0 0 0 0.2 
-        -image "sIBL_GUI_For_Maya_Preferences.png" 
-        -image1 "sIBL_GUI_For_Maya_Preferences.png" 
-        -style "iconOnly" 
+        -font "tinyBoldLabelFont"
+        -overlayLabelColor 0.8 0.8 0.8
+        -overlayLabelBackColor 0 0 0 0.2
+        -image "sIBL_GUI_For_Maya_Preferences.png"
+        -image1 "sIBL_GUI_For_Maya_Preferences.png"
+        -style "iconOnly"
         -marginWidth 1
         -marginHeight 1
-        -command "import sIBL_GUI_For_Maya\nreload( sIBL_GUI_For_Maya )\nsIBL_GUI_For_Maya.openPreferences()" 
-        -sourceType "python" 
+        -command "import sIBL_GUI_For_Maya\nreload( sIBL_GUI_For_Maya )\nsIBL_GUI_For_Maya.openPreferences()"
+        -sourceType "python"
         -commandRepeatable 1
     ;
     shelfButton
@@ -37,19 +37,19 @@ global proc shelf_sIBL_GUI () {
         -visible 1
         -preventOverride 0
         -enableBackground 0
-        -align "center" 
-        -label "Launch sIBL_GUI" 
+        -align "center"
+        -label "Launch sIBL_GUI"
         -labelOffset 0
-        -font "tinyBoldLabelFont" 
-        -overlayLabelColor 0.8 0.8 0.8 
-        -overlayLabelBackColor 0 0 0 0.2 
-        -image "sIBL_GUI_For_Maya_Launch.png" 
-        -image1 "sIBL_GUI_For_Maya_Launch.png" 
-        -style "iconOnly" 
+        -font "tinyBoldLabelFont"
+        -overlayLabelColor 0.8 0.8 0.8
+        -overlayLabelBackColor 0 0 0 0.2
+        -image "sIBL_GUI_For_Maya_Launch.png"
+        -image1 "sIBL_GUI_For_Maya_Launch.png"
+        -style "iconOnly"
         -marginWidth 1
         -marginHeight 1
-        -command "import sIBL_GUI_For_Maya\nreload( sIBL_GUI_For_Maya )\nsIBL_GUI_For_Maya.launchApplication()" 
-        -sourceType "python" 
+        -command "import sIBL_GUI_For_Maya\nreload( sIBL_GUI_For_Maya )\nsIBL_GUI_For_Maya.launchApplication()"
+        -sourceType "python"
         -commandRepeatable 1
     ;
     shelfButton
@@ -61,19 +61,19 @@ global proc shelf_sIBL_GUI () {
         -visible 1
         -preventOverride 0
         -enableBackground 0
-        -align "center" 
-        -label "Execute Loader Script" 
+        -align "center"
+        -label "Execute Loader Script"
         -labelOffset 0
-        -font "tinyBoldLabelFont" 
-        -overlayLabelColor 0.8 0.8 0.8 
-        -overlayLabelBackColor 0 0 0 0.2 
-        -image "sIBL_GUI_For_Maya_Execute.png" 
-        -image1 "sIBL_GUI_For_Maya_Execute.png" 
-        -style "iconOnly" 
+        -font "tinyBoldLabelFont"
+        -overlayLabelColor 0.8 0.8 0.8
+        -overlayLabelBackColor 0 0 0 0.2
+        -image "sIBL_GUI_For_Maya_Execute.png"
+        -image1 "sIBL_GUI_For_Maya_Execute.png"
+        -style "iconOnly"
         -marginWidth 1
         -marginHeight 1
-        -command "import sIBL_GUI_For_Maya\nreload( sIBL_GUI_For_Maya )\nsIBL_GUI_For_Maya.executeLoaderScript()" 
-        -sourceType "python" 
+        -command "import sIBL_GUI_For_Maya\nreload( sIBL_GUI_For_Maya )\nsIBL_GUI_For_Maya.executeLoaderScript()"
+        -sourceType "python"
         -commandRepeatable 1
     ;
     shelfButton
@@ -85,19 +85,19 @@ global proc shelf_sIBL_GUI () {
         -visible 1
         -preventOverride 0
         -enableBackground 0
-        -align "center" 
-        -label "Delete Smart Ibl Nodes" 
+        -align "center"
+        -label "Delete Smart Ibl Nodes"
         -labelOffset 0
-        -font "plainLabelFont" 
-        -overlayLabelColor 0.8 0.8 0.8 
-        -overlayLabelBackColor 0 0 0 0.2 
-        -image "sIBL_GUI_For_Maya_Deletion.png" 
-        -image1 "sIBL_GUI_For_Maya_Deletion.png" 
-        -style "iconOnly" 
+        -font "plainLabelFont"
+        -overlayLabelColor 0.8 0.8 0.8
+        -overlayLabelBackColor 0 0 0 0.2
+        -image "sIBL_GUI_For_Maya_Deletion.png"
+        -image1 "sIBL_GUI_For_Maya_Deletion.png"
+        -style "iconOnly"
         -marginWidth 1
         -marginHeight 1
-        -command "import sIBL_GUI_For_Maya\nreload( sIBL_GUI_For_Maya )\nsIBL_GUI_For_Maya.deleteSmartIblNodes()" 
-        -sourceType "python" 
+        -command "import sIBL_GUI_For_Maya\nreload( sIBL_GUI_For_Maya )\nsIBL_GUI_For_Maya.deleteSmartIblNodes()"
+        -sourceType "python"
         -commandRepeatable 1
     ;
-} 
+}

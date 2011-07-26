@@ -5,14 +5,14 @@ Extract "sIBL_GUI For Maya.zip" content into your Maya Preferences folder, for e
 You can the following lines into your "userSetup.mel" if you want the Socket Port to be opened automatically on Maya startup:
 
 On Maya 2010 and under:
-	
+
 	commandPort -n ( "127.0.0.1:"  + `optionVar -q "sIBL_GUI_Command_Port"` );
-	commandPort -n ( ":" + `optionVar -q "sIBL_GUI_Command_Port"`); 
+	commandPort -n ( ":" + `optionVar -q "sIBL_GUI_Command_Port"`);
 
 On Maya 2011 and higher:
 
 	commandPort -n ( "127.0.0.1:"  + `optionVar -q "sIBL_GUI_Command_Port"` );
- 
+
 - Usage -
 First Icon launch "sIBL_GUI For Maya Preferences" window where you define "sIBL_GUI" executable path and Remote Connection Port.
 Second Icon launch "sIBL_GUI".

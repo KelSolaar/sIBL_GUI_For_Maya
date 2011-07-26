@@ -12,17 +12,17 @@ global proc shelf_sIBL_GUI () {
         -manage 1
         -visible 1
         -preventOverride 0
-        -align "center" 
-        -label "sIBL_GUI  For Maya Prefences" 
+        -align "center"
+        -label "sIBL_GUI  For Maya Prefences"
         -labelOffset 0
-        -font "tinyBoldLabelFont" 
-        -image "sIBL_GUI_For_Maya_Preferences.xpm" 
-        -image1 "sIBL_GUI_For_Maya_Preferences.xpm" 
-        -style "iconOnly" 
+        -font "tinyBoldLabelFont"
+        -image "sIBL_GUI_For_Maya_Preferences.xpm"
+        -image1 "sIBL_GUI_For_Maya_Preferences.xpm"
+        -style "iconOnly"
         -marginWidth 1
         -marginHeight 1
-        -command "import sIBL_GUI_For_Maya\rreload( sIBL_GUI_For_Maya )\rsIBL_GUI_For_Maya.openPreferences()" 
-        -sourceType "python" 
+        -command "import sIBL_GUI_For_Maya\rreload( sIBL_GUI_For_Maya )\rsIBL_GUI_For_Maya.openPreferences()"
+        -sourceType "python"
         -actionIsSubstitute 0
         -commandRepeatable 1
     ;
@@ -34,17 +34,17 @@ global proc shelf_sIBL_GUI () {
         -manage 1
         -visible 1
         -preventOverride 0
-        -align "center" 
-        -label "Launch sIBL_GUI" 
+        -align "center"
+        -label "Launch sIBL_GUI"
         -labelOffset 0
-        -font "tinyBoldLabelFont" 
-        -image "sIBL_GUI_For_Maya_Launch.xpm" 
-        -image1 "sIBL_GUI_For_Maya_Launch.xpm" 
-        -style "iconOnly" 
+        -font "tinyBoldLabelFont"
+        -image "sIBL_GUI_For_Maya_Launch.xpm"
+        -image1 "sIBL_GUI_For_Maya_Launch.xpm"
+        -style "iconOnly"
         -marginWidth 1
         -marginHeight 1
-        -command "import sIBL_GUI_For_Maya\rreload( sIBL_GUI_For_Maya )\rsIBL_GUI_For_Maya.launchApplication()" 
-        -sourceType "python" 
+        -command "import sIBL_GUI_For_Maya\rreload( sIBL_GUI_For_Maya )\rsIBL_GUI_For_Maya.launchApplication()"
+        -sourceType "python"
         -actionIsSubstitute 0
         -commandRepeatable 1
     ;
@@ -56,17 +56,17 @@ global proc shelf_sIBL_GUI () {
         -manage 1
         -visible 1
         -preventOverride 0
-        -align "center" 
-        -label "Execute Loader Script" 
+        -align "center"
+        -label "Execute Loader Script"
         -labelOffset 0
-        -font "tinyBoldLabelFont" 
-        -image "sIBL_GUI_For_Maya_Execute.xpm" 
-        -image1 "sIBL_GUI_For_Maya_Execute.xpm" 
-        -style "iconOnly" 
+        -font "tinyBoldLabelFont"
+        -image "sIBL_GUI_For_Maya_Execute.xpm"
+        -image1 "sIBL_GUI_For_Maya_Execute.xpm"
+        -style "iconOnly"
         -marginWidth 1
         -marginHeight 1
-        -command "import sIBL_GUI_For_Maya\rreload( sIBL_GUI_For_Maya )\rsIBL_GUI_For_Maya.executeLoaderScript()" 
-        -sourceType "python" 
+        -command "import sIBL_GUI_For_Maya\rreload( sIBL_GUI_For_Maya )\rsIBL_GUI_For_Maya.executeLoaderScript()"
+        -sourceType "python"
         -actionIsSubstitute 0
         -commandRepeatable 1
     ;
@@ -78,18 +78,18 @@ global proc shelf_sIBL_GUI () {
         -manage 1
         -visible 1
         -preventOverride 0
-        -align "center" 
-        -label "Delete Smart Ibl Nodes" 
+        -align "center"
+        -label "Delete Smart Ibl Nodes"
         -labelOffset 0
-        -font "tinyBoldLabelFont" 
-        -image "sIBL_GUI_For_Maya_Deletion.xpm" 
-        -image1 "sIBL_GUI_For_Maya_Deletion.xpm" 
-        -style "iconOnly" 
+        -font "tinyBoldLabelFont"
+        -image "sIBL_GUI_For_Maya_Deletion.xpm"
+        -image1 "sIBL_GUI_For_Maya_Deletion.xpm"
+        -style "iconOnly"
         -marginWidth 1
         -marginHeight 1
-        -command "import sIBL_GUI_For_Maya\rreload( sIBL_GUI_For_Maya )\rsIBL_GUI_For_Maya.deleteSmartIblNodes()" 
-        -sourceType "python" 
+        -command "import sIBL_GUI_For_Maya\rreload( sIBL_GUI_For_Maya )\rsIBL_GUI_For_Maya.deleteSmartIblNodes()"
+        -sourceType "python"
         -actionIsSubstitute 0
         -commandRepeatable 1
     ;
-} 
+}

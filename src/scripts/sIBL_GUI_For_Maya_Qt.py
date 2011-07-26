@@ -328,7 +328,7 @@ def deleteSmartIblNodes():
 		userChoice = cmds.confirmDialog(title="sIBL_GUI", message="Smart Ibl Nodes Are Planned For Deletion! Would You Like To Proceed?", button=["Yes","No"], defaultButton="Yes", cancelButton="No", dismissString="No")
 		if userChoice == "Yes":
 			nodes.extend(sorted(cmds.ls("sIBL*", l = True)))
-	
+
 	for node in nodes:
 		if cmds.objExists(node):
 			print("sIBL_GUI | Deleting Node: '%s'!" % node)
