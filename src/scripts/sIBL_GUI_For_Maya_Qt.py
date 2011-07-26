@@ -9,7 +9,7 @@
 
 #***********************************************************************************************
 #
-# If You Are A HDRI Ressources Vendor And Are Interested In Making Your Sets SmartIBL Compliant:
+# If You Are A HDRI Resources Vendor And Are Interested In Making Your Sets SmartIBL Compliant:
 # Please Contact Us At HDRLabs:
 # Christian Bloch - blochi@edenfx.com
 # Thomas Mansencal - thomas.mansencal@gmail.com
@@ -30,11 +30,11 @@
 """
 
 #***********************************************************************************************
-#***	Python Begin
+#***	Python Begin.
 #***********************************************************************************************
 
 #***********************************************************************************************
-#***	External Imports
+#***	External Imports.
 #***********************************************************************************************
 import maya.cmds as cmds
 import maya.mel as mel
@@ -43,7 +43,7 @@ import platform
 import re
 
 #***********************************************************************************************
-#***	Overall Variables
+#***	Overall Variables.
 #***********************************************************************************************
 LOADER_SCRIPTS_DIRECTORY = "HDRLabs/sIBL_GUI/io/loaderScripts/"
 LOADER_SCRIPT = "sIBL_Maya_Import.mel"
@@ -54,7 +54,7 @@ LINUX_RELEASE_URL = "http://kelsolaar.hdrlabs.com/?dir=./sIBL_GUI/Repository/Bui
 APPLICATION_THREAD_URL = "http://www.hdrlabs.com/cgi-bin/forum/YaBB.pl?num=1271609371"
 
 #***********************************************************************************************
-#***	Module Classes And Definitions
+#***	Module Classes And Definitions.
 #***********************************************************************************************
 class Environment(object):
 	"""
@@ -335,5 +335,5 @@ def deleteSmartIblNodes():
 			cmds.delete(node)
 
 #***********************************************************************************************
-#***	Python End
+#***	Python End.
 #***********************************************************************************************
