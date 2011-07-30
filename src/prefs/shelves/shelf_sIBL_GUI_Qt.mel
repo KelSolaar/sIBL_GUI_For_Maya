@@ -3,7 +3,6 @@ global proc shelf_sIBL_GUI () {
     global string $gBuffStr0;
     global string $gBuffStr1;
 
-
     shelfButton
         -enableCommandRepeat 1
         -enable 1

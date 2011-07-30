@@ -1,21 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-#***********************************************************************************************
-#
-# Copyright (C) 2008 - 2011 - Thomas Mansencal - thomas.mansencal@gmail.com
-#
-#***********************************************************************************************
-
-#***********************************************************************************************
-#
-# If You Are A HDRI Resources Vendor And Are Interested In Making Your Sets SmartIBL Compliant:
-# Please Contact Us At HDRLabs:
-# Christian Bloch - blochi@edenfx.com
-# Thomas Mansencal - thomas.mansencal@gmail.com
-#
-#***********************************************************************************************
-
 """
 **sIBL_GUI_For_Maya.py
 
@@ -30,11 +15,7 @@
 """
 
 #***********************************************************************************************
-#***	Python Begin.
-#***********************************************************************************************
-
-#***********************************************************************************************
-#***	External Imports.
+#***	External imports.
 #***********************************************************************************************
 import maya.cmds as cmds
 import maya.mel as mel
@@ -43,8 +24,15 @@ import platform
 import re
 
 #***********************************************************************************************
-#***	Overall Variables.
+#***	Module attributes.
 #***********************************************************************************************
+__author__ = "Thomas Mansencal"
+__copyright__ = "Copyright (C) 2008 - 2011 - Thomas Mansencal"
+__license__ = "GPL V3.0 - http://www.gnu.org/licenses/"
+__maintainer__ = "Thomas Mansencal"
+__email__ = "thomas.mansencal@gmail.com"
+__status__ = "Production"
+
 LOADER_SCRIPTS_DIRECTORY = "HDRLabs/sIBL_GUI/io/loaderScripts/"
 LOADER_SCRIPT = "sIBL_Maya_Import.mel"
 HDRLABS_URL = "http://www.hdrlabs.com"
@@ -54,7 +42,7 @@ LINUX_RELEASE_URL = "http://kelsolaar.hdrlabs.com/?dir=./sIBL_GUI/Repository/Bui
 APPLICATION_THREAD_URL = "http://www.hdrlabs.com/cgi-bin/forum/YaBB.pl?num=1271609371"
 
 #***********************************************************************************************
-#***	Module Classes And Definitions.
+#***	Module classes and definitions.
 #***********************************************************************************************
 class Environment( object ):
 	"""
@@ -338,7 +326,3 @@ def deleteSmartIblNodes():
 		if cmds.objExists(node):
 			print("sIBL_GUI | Deleting Node: '%s'!" % node)
 			cmds.delete(node)
-
-#***********************************************************************************************
-#***	Python End.
-#***********************************************************************************************
