@@ -53,7 +53,7 @@ class Environment( object ):
 		"""
 		This Method Initializes The Class.
 
-		@param variable: Variable To Manipulate. ( String )
+		:param variable: Variable To Manipulate. ( String )
 		"""
 
 		# --- Setting Class Attributes. ---
@@ -63,7 +63,7 @@ class Environment( object ):
 		"""
 		This Method Gets The Chosen Environment Variable Path As A String.
 
-		@return: Variable Path. ( String )
+		:return: Variable Path. ( String )
 		"""
 
 		if self._variable:
@@ -74,7 +74,7 @@ def getSystemApplicationDatasDirectory():
 	"""
 	This Definition Gets The System Application Datas Directory.
 
-	@return: User Application Datas Directory. ( String )
+	:return: User Application Datas Directory. ( String )
 	"""
 
 	if platform.system() == "Windows" or platform.system() == "Microsoft":
@@ -127,8 +127,8 @@ def getExecutablePath( fileName, fileType ):
 	"""
 	This Definition Gets sIBL_GUI Executable Path.
 
-	@param fileName: File Name. ( String )
-	@param fileType: File Type. ( String )
+	:param fileName: File Name. ( String )
+	:param fileType: File Type. ( String )
 	"""
 
 	if platform.system() == "Darwin":
@@ -176,7 +176,7 @@ def openUrl( url ):
 	"""
 	This Definition Opens HDRLabs Thread.
 
-	@param url: Url To Open. ( String )
+	:param url: Url To Open. ( String )
 	"""
 	cmds.launch( web = url )
 
