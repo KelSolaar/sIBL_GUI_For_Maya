@@ -305,7 +305,7 @@ def deleteSmartIblNodes():
 			relatives = [node]
 			relatives.extend(cmds.listRelatives(node, f = True, ad = True))
 			for relative in relatives:
-				if re.search("\w*_Root$", relative):
+				if re.search(r"\w*_Root$", relative):
 					if relative.replace("_Root", "_Support").split("|")[-1] in cmds.listRelatives(relative, ad = True):
 						prefixes.append(relative.replace("_Root", "").split("|")[-1])
 		for prefix in prefixes:
