@@ -70,11 +70,11 @@ class Environment(object):
 			for param in os.environ.keys():
 				if(self._variable == param): return os.environ[param]
 
-def getSystemApplicationDatasDirectory():
+def getSystemApplicationDataDirectory():
 	"""
-	This Definition Gets The System Application Datas Directory.
+	This Definition Gets The System Application Data Directory.
 
-	:return: User Application Datas Directory. (String)
+	:return: User Application Data Directory. (String)
 	"""
 
 	if platform.system() == "Windows" or platform.system() == "Microsoft":
@@ -279,10 +279,10 @@ def executeLoaderScript():
 	This Definition Executes sIBL_GUI Maya Loader Script.
 	"""
 
-	systemApplicationDatasDirectory = getSystemApplicationDatasDirectory()
+	systemApplicationDataDirectory = getSystemApplicationDataDirectory()
 
-	if systemApplicationDatasDirectory:
-		loaderScript = os.path.normpath(os.path.join(systemApplicationDatasDirectory, LOADER_SCRIPTS_DIRECTORY, LOADER_SCRIPT))
+	if systemApplicationDataDirectory:
+		loaderScript = os.path.normpath(os.path.join(systemApplicationDataDirectory, LOADER_SCRIPTS_DIRECTORY, LOADER_SCRIPT))
 
 		if platform.system() == "Windows" or platform.system() == "Microsoft":
 			loaderScript = loaderScript.replace("\\", "\\\\")
