@@ -67,7 +67,7 @@ class Environment(object):
 		"""
 
 		if self._variable:
-			for param in os.environ.keys():
+			for param in os.environ:
 				if(self._variable == param): return os.environ[param]
 
 def getSystemApplicationDataDirectory():
