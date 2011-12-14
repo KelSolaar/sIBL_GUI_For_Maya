@@ -1,66 +1,91 @@
-h1=. sIBL_GUI For Maya - 1.1.2
+sIBL_GUI For Maya - 2.0.0
+=========================
 
-h2=. Change Log
+Change Log
+==========
 
-h3. 1.1.2
+2.0.0
+-----
 
-* Added Smart Ibl nodes removal shelf button.
+-  Code refactor for sIBL_GUI 4.0.0.
+-  Drop support for Maya versions prior Maya 2011.
 
-h3. 1.1.1
+1.1.2
+-----
 
-* Updated code to directly support "sIBL_GUI.app" as sIBL_GUI executable path in Mac Os X.
+-  Added Smart Ibl nodes removal shelf button.
 
-h3. 1.1.0
+1.1.1
+-----
 
-* Repackaged with modified header.
+-  Updated code to directly support "sIBL_GUI.app" as sIBL_GUI executable path in Mac Os X.
 
-h3. 1.0.9
+1.1.0
+-----
 
-* Added online links buttons.
-* Added sIBL_GUI Logo for Qt helper script version.
-* Ui updated.
+-  Repackaged with modified header.
 
-h3. 1.0.8
+1.0.9
+-----
 
-* Added Maya 2011 support.
-* Refactored the code into a "sIBL_GUI_For_Maya" module.
-* Updated the icons.
+-  Added online links buttons.
+-  Added sIBL_GUI Logo for Qt helper script version.
+-  Ui updated.
 
-h3. 1.0.7
+1.0.8
+-----
 
-* Fixed a missing Procedure Call.
+-  Added Maya 2011 support.
+-  Refactored the code into a "sIBL_GUI_For_Maya" module.
+-  Updated the icons.
 
-h3. 1.0.6
+1.0.7
+-----
 
-* Command Port Option Var is now correctly stored when you open the Command Port.
+-  Fixed a missing Procedure Call.
 
-h3. 1.0.5
+1.0.6
+-----
 
-* Modified Command Port opening for Windows Vista x64 and Windows 7 x64 support.
+-  Command Port Option Var is now correctly stored when you open the Command Port.
 
-h3. 1.0.4
+1.0.5
+-----
 
-* Corrected a problem related to "platform.system()" command on Windows.
+-  Modified Command Port opening for Windows Vista x64 and Windows 7 x64 support.
 
-h3. 1.0.3
+1.0.4
+-----
 
-* Compatibility with Mac Os X and Linux.
+-  Corrected a problem related to "platform.system()" command on Windows.
 
-h3. 1.0.2
+1.0.3
+-----
 
-* Rolled Back Output Loader Script Name.
+-  Compatibility with Mac Os X and Linux.
 
-h3. 1.0.1
+1.0.2
+-----
 
-* Changed Output Loader Script Name.
+-  Rolled Back Output Loader Script Name.
 
-h3. 1.0.0
+1.0.1
+-----
 
-* Initial Release of sIBL_GUI For Maya.
+-  Changed Output Loader Script Name.
 
-h2=. About
+1.0.0
+-----
 
-sIBL_GUI by Thomas Mansencal - 2008 - 2011
-Copyright (C) 2008 - 2011 - Thomas Mansencal - "kelsolaar_fool@hotmail.com":mailto:kelsolaar_fool@hotmail.com
-This Software Is Released Under Terms Of GNU GPL V3 License: "http://www.gnu.org/licenses/":http://www.gnu.org/licenses/
-"http://my.opera.com/KelSolaar/":http://my.opera.com/KelSolaar/
+-  Initial Release of sIBL_GUI For Maya.
+
+About
+-----
+
+About
+-----
+
+| sIBL_GUI by Thomas Mansencal – 2008 – 2011
+| Copyright© 2008 – 2011 – Thomas Mansencal – `thomas.mansencal@gmail.com <mailto:thomas.mansencal@gmail.com>`_
+| This Software Is Released Under Terms Of GNU GPL V3 License: `http://www.gnu.org/licenses/ <http://www.gnu.org/licenses/>`_
+| `http://www.thomasmansencal.com/ <http://www.thomasmansencal.com/>`_
