@@ -82,21 +82,21 @@ def _setExecutablePathOptionVar():
 	This definition sets **executablePath** optionVar.
 	"""
 
-	_setOptionVar("sIBL_GUI_executablePath", cmds.textField("executablePath_textField", query=True, text=True))
+	_setOptionVar("sIBL_GUI_executablePath", cmds.textField("Executable_Path_textField", query=True, text=True))
 
 def _setLoaderScriptPathOptionVar():
 	"""
 	This definition sets **sIBL_GUI_loaderScriptPath** optionVar.
 	"""
 
-	_setOptionVar("sIBL_GUI_loaderScriptPath", cmds.textField("loaderScriptPath_textField", query=True, text=True))
+	_setOptionVar("sIBL_GUI_loaderScriptPath", cmds.textField("Loader_Script_Path_textField", query=True, text=True))
 
 def _setCommandPortOptionVar():
 	"""
 	This definition sets **sIBL_GUI_commandPort** optionVar.
 	"""
 
-	_setOptionVar("sIBL_GUI_commandPort", cmds.intSliderGrp("commandPort_intSliderGrp", query=True, value=True))
+	_setOptionVar("sIBL_GUI_commandPort", cmds.intSliderGrp("Command_Port_intSliderGrp", query=True, value=True))
 
 def _setOptionVar(name, value):
 	"""
@@ -115,11 +115,11 @@ def _openUrl(url):
 	:param url: Url to open. ( String )
 	"""
 
-	cmds.launches(web=url)
+	cmds.launch(web=url)
 
-def _executablePath_button__command(state=None):
+def _Executable_Path_button__command(state=None):
 	"""
-	This definition is triggered by **executablePath_button** widget.
+	This definition is triggered by **Executable_Path_button** widget.
 
 	:param state: Button state. ( Boolean )
 	"""
@@ -130,14 +130,14 @@ def _executablePath_button__command(state=None):
 		return
 
 	if fileName.endswith("sIBL_GUI.exe") or fileName.endswith("sIBL_GUI.app") or fileName.endswith("sIBL_GUI"):
-		cmds.textField("executablePath_textField", edit=True, text=fileName)
+		cmds.textField("Executable_Path_textField", edit=True, text=fileName)
 		_setExecutablePathOptionVar()
 	else:
 		mel.eval("warning(\"sIBL_GUI | Chosen executable path is invalid!\");")
 
-def _executablePath_textField__changeCommand(value):
+def _Executable_Path_textField__changeCommand(value):
 	"""
-	This definition is triggered by **executablePath_textField** widget.
+	This definition is triggered by **Executable_Path_textField** widget.
 
 	:param value: Value. ( String )
 	"""
@@ -150,9 +150,9 @@ def _executablePath_textField__changeCommand(value):
 	else:
 		mel.eval("warning(\"sIBL_GUI | Chosen executable path is invalid!\");")
 
-def _loaderScriptPath_button__command(state=None):
+def _Loader_Script_Path_button__command(state=None):
 	"""
-	This definition is triggered by **loaderScriptPath_button** widget.
+	This definition is triggered by **Loader_Script_Path_button** widget.
 
 	:param state: Button state. ( Boolean )
 	"""
@@ -162,12 +162,12 @@ def _loaderScriptPath_button__command(state=None):
 	if not fileName:
 		return
 
-	cmds.textField("loaderScriptPath_textField", edit=True, text=fileName)
+	cmds.textField("Loader_Script_Path_textField", edit=True, text=fileName)
 	_setLoaderScriptPathOptionVar()
 
-def _loaderScriptPath_textField__changeCommand(value):
+def _Loader_Script_Path_textField__changeCommand(value):
 	"""
-	This definition is triggered by **_loaderScriptPath_textField** widget.
+	This definition is triggered by **_Loader_Script_Path_textField** widget.
 
 	:param value: Value. ( String )
 	"""
@@ -177,16 +177,16 @@ def _loaderScriptPath_textField__changeCommand(value):
 	else:
 		mel.eval("warning(\"sIBL_GUI | Chosen Loader Script path is invalid!\");")
 
-def _commandPort_intSliderGrp__changeCommand(value):
+def _Command_Port_intSliderGrp__changeCommand(value):
 	"""
-	This definition is triggered by **commandPort_intSliderGrp** widget.
+	This definition is triggered by **Command_Port_intSliderGrp** widget.
 
 	:param value: Value. ( Float )
 	"""
 
 	_setCommandPortOptionVar()
 
-def _commandPort_button__command(state=None):
+def _Command_Port_button__command(state=None):
 	"""
 	This definition opens the command port.
 
@@ -194,13 +194,13 @@ def _commandPort_button__command(state=None):
 	"""
 
 	try:
-		cmds.commandPort(name="127.0.0.1:" + str(cmds.intSliderGrp("commandPort_intSliderGrp", query=True, value=True)))
+		cmds.commandPort(name="127.0.0.1:" + str(cmds.intSliderGrp("Command_Port_intSliderGrp", query=True, value=True)))
 	except:
 		mel.eval("warning(\"sIBL_GUI | Command port is already open or can't be opened!\");")
 
 	_setCommandPortOptionVar()
 
-def _getApplication_button__command(state=None):
+def _Get_Application_button__command(state=None):
 	"""
 	This definition opens Online Repository.
 
@@ -216,7 +216,7 @@ def _getApplication_button__command(state=None):
 
 	_openUrl(url)
 
-def _hdrlabs_button__command(state=None):
+def _HDRlabs_button__command(state=None):
 	"""
 	This definition opens HDRLabs thread.
 
@@ -225,7 +225,7 @@ def _hdrlabs_button__command(state=None):
 
 	_openUrl(HDRLABS_URL)
 
-def _applicationThread_button__command(state=None):
+def _Application_Thread_button__command(state=None):
 	"""
 	This definition opens sIBL_GUI thread.
 
@@ -256,44 +256,44 @@ def _sIBL_GUI_For_Maya_window():
 
 	cmds.frameLayout(label="sIBL_GUI Executable Path", cll=False, li=4, borderStyle="etchedOut", mh=4, mw=4)
 	cmds.rowLayout(numberOfColumns=2, adjustableColumn=1, columnAlign2=["center", "center"], columnAttach=[(1, "both", horizontalSpacing), (2, "both", horizontalSpacing)])
-	cmds.textField("executablePath_textField", cc=_executablePath_textField__changeCommand)
-	cmds.button("executablePath_button", label="...", al="center", command=_executablePath_button__command)
+	cmds.textField("Executable_Path_textField", cc=_Executable_Path_textField__changeCommand)
+	cmds.button("Executable_Path_button", label="...", al="center", command=_Executable_Path_button__command)
 	cmds.setParent(upLevel=True)
 	cmds.setParent(upLevel=True)
 
 	executablePath = cmds.optionVar(q="sIBL_GUI_executablePath")
 	if executablePath:
-		cmds.textField("executablePath_textField", edit=True, text=executablePath)
+		cmds.textField("Executable_Path_textField", edit=True, text=executablePath)
 
 	cmds.frameLayout(label="Loader Script Path", cll=False, li=4, borderStyle="etchedOut", mh=4, mw=4)
 	cmds.rowLayout(numberOfColumns=2, adjustableColumn=1, columnAlign2=["center", "center"], columnAttach=[(1, "both", horizontalSpacing), (2, "both", horizontalSpacing)])
-	cmds.textField("loaderScriptPath_textField", cc=_loaderScriptPath_textField__changeCommand)
-	cmds.button("loaderScriptPath_button", label="...", al="center", command=_loaderScriptPath_button__command)
+	cmds.textField("Loader_Script_Path_textField", cc=_Loader_Script_Path_textField__changeCommand)
+	cmds.button("Loader_Script_Path_button", label="...", al="center", command=_Loader_Script_Path_button__command)
 	cmds.setParent(upLevel=True)
 	cmds.setParent(upLevel=True)
 
 	sIBL_GUI_loaderScriptPath = cmds.optionVar(q="sIBL_GUI_loaderScriptPath")
 	if sIBL_GUI_loaderScriptPath:
-		cmds.textField("loaderScriptPath_textField", edit=True, text=sIBL_GUI_loaderScriptPath)
+		cmds.textField("Loader_Script_Path_textField", edit=True, text=sIBL_GUI_loaderScriptPath)
 
 	cmds.frameLayout(label="Command Port", cll=False, li=4, borderStyle="etchedOut", mh=4, mw=4)
 	cmds.rowLayout(numberOfColumns=2, adjustableColumn=1, columnAlign2=["center", "center"], columnAttach=[(1, "both", horizontalSpacing), (2, "both", horizontalSpacing)])
-	cmds.intSliderGrp("commandPort_intSliderGrp", field=True, minValue=0, maxValue=65535, value=2048, cc=_commandPort_intSliderGrp__changeCommand)
-	cmds.button("commandPort_button", label="Open Port", al="center", command=_commandPort_button__command)
-	cmds.setParent(upLevel=True)
-	cmds.setParent(upLevel=True)
-
-	cmds.frameLayout(label="Online", cll=False, li=4, borderStyle="etchedOut", mh=4, mw=4)
-	cmds.rowLayout(numberOfColumns=3, adjustableColumn=3, columnAlign3=["center", "center", "center"], columnAttach=[(1, "both", horizontalSpacing), (2, "both", horizontalSpacing), (3, "both", horizontalSpacing)])
-	cmds.button("getApplication_button", label="Get sIBL_GUI ...", al="center", command=_getApplication_button__command)
-	cmds.button("hdrlabs_button", label="Visit HDRLabs ...", al="center", command=_hdrlabs_button__command)
-	cmds.button("applicationThread_button", label="Visit sIBL_GUI Thread ...", al="right", command=_applicationThread_button__command)
+	cmds.intSliderGrp("Command_Port_intSliderGrp", field=True, minValue=0, maxValue=65535, value=2048, cc=_Command_Port_intSliderGrp__changeCommand)
+	cmds.button("Command_Port_button", label="Open Port", al="center", command=_Command_Port_button__command)
 	cmds.setParent(upLevel=True)
 	cmds.setParent(upLevel=True)
 
 	sIBL_GUI_commandPort = int(cmds.optionVar(q="sIBL_GUI_commandPort"))
 	if sIBL_GUI_commandPort:
-		cmds.intSliderGrp("commandPort_intSliderGrp", edit=True, value=sIBL_GUI_commandPort)
+		cmds.intSliderGrp("Command_Port_intSliderGrp", edit=True, value=sIBL_GUI_commandPort)
+
+	cmds.frameLayout(label="Online", cll=False, li=4, borderStyle="etchedOut", mh=4, mw=4)
+	cmds.rowLayout(numberOfColumns=3, adjustableColumn=3, columnAlign3=["center", "center", "center"], columnAttach=[(1, "both", horizontalSpacing), (2, "both", horizontalSpacing), (3, "both", horizontalSpacing)])
+	cmds.button("Get_Application_button", label="Get sIBL_GUI ...", al="center", command=_Get_Application_button__command)
+	cmds.button("HDRlabs_button", label="Visit HDRLabs ...", al="center", command=_HDRlabs_button__command)
+	cmds.button("Application_Thread_button", label="Visit sIBL_GUI Thread ...", al="right", command=_Application_Thread_button__command)
+	cmds.setParent(upLevel=True)
+	cmds.setParent(upLevel=True)
 
 	cmds.showWindow("_sIBL_GUI_For_Maya_window")
 	cmds.windowPref(enableAll=True)
@@ -306,7 +306,7 @@ def openPreferences():
 	_sIBL_GUI_For_Maya_window()
 	return True
 
-def launchesApplication():
+def launchApplication():
 	"""
 	This definition launches **sIBL_GUI**.
 
