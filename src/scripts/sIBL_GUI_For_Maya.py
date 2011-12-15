@@ -175,7 +175,7 @@ def _loaderScriptPath_textField__changeCommand(value):
 	if os.path.exists(value):
 		_setLoaderScriptPathOptionVar()
 	else:
-		mel.eval("warning(\"sIBL_GUI | Chosen loader path is invalid!\");")
+		mel.eval("warning(\"sIBL_GUI | Chosen Loader Script path is invalid!\");")
 
 def _commandPort_intSliderGrp__changeCommand(value):
 	"""
@@ -329,7 +329,7 @@ def launchesApplication():
 
 def executeLoaderScript():
 	"""
-	This definition executes **sIBL_GUI** Maya loader script.
+	This definition executes **sIBL_GUI** Loader Script.
 
 	:return: Definition sucess. ( Boolean )
 	"""
@@ -350,10 +350,10 @@ def executeLoaderScript():
 					setup.execute()
 			return True
 		else:
-			mel.eval("error(\"sIBL_GUI | Maya loader script doesn't exists!\");")
+			mel.eval("error(\"sIBL_GUI | Loader Script doesn't exists!\");")
 	else:
-		mel.eval("warning(\"sIBL_GUI | No Maya loader script found!\");")
-		cmds.confirmDialog(title="sIBL_GUI | Warning", message="No Maya loader script found!\nPlease define one in preferences!", button=["Ok"], defaultButton="Ok")
+		mel.eval("warning(\"sIBL_GUI | No Loader Script found!\");")
+		cmds.confirmDialog(title="sIBL_GUI | Warning", message="No Loader Script found!\nPlease define one in preferences!", button=["Ok"], defaultButton="Ok")
 		openPreferences()
 
 def deleteSmartIblNodes():
