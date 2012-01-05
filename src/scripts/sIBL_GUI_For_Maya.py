@@ -8,7 +8,7 @@
 	Windows, Linux, Mac Os X.
 
 **Description:**
-	Maya sIBL_GUI Helper Script For Maya 2011 And Higher.
+	Maya sIBL_GUI Helper Script for Maya 2011 and higher.
 
 **Others:**
 
@@ -129,7 +129,7 @@ def _Executable_Path_button__command(state=None):
 	if not fileName:
 		return
 
-	if fileName.endswith("sIBL_GUI.exe") or fileName.endswith("sIBL_GUI.app") or fileName.endswith("sIBL_GUI"):
+	if fileName.endswith("sIBL_GUI.exe") or re.search("sIBL_GUI[\d ]*\.app", fileName) or fileName.endswith("sIBL_GUI"):
 		cmds.textField("Executable_Path_textField", edit=True, text=fileName)
 		_setExecutablePathOptionVar()
 	else:

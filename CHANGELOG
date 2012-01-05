@@ -1,14 +1,19 @@
-sIBL_GUI For Maya - 2.0.0
+sIBL_GUI For Maya - 2.0.1
 =========================
 
 Change Log
 ==========
 
+2.0.1
+-----
+
+-  Fixed executable path filtering rule on Mac Os X.
+
 2.0.0
 -----
 
 -  Code refactor for sIBL_GUI 4.0.0.
--  Drop support for Maya versions prior Maya 2011.
+-  Dropped support for Maya versions prior Maya 2011.
 
 1.1.2
 -----
