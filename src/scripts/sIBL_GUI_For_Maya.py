@@ -40,7 +40,7 @@ __all__ = ["HDRLABS_URL",
 		"LINUX_RELEASE_URL",
 		"APPLICATION_THREAD_URL",
 		"openPreferences",
-		"launchesApplication",
+		"launchApplication",
 		"executeLoaderScript",
 		"deleteSmartIblNodes"]
 
@@ -318,9 +318,9 @@ def launchApplication():
 		if platform.system() == "Windows" or platform.system() == "Microsoft":
 			os.system("start /D" + "\"" + os.path.dirname(executablePath) + "\"" + " " + executablePath.replace(" ", "\" \""))
 		elif platform.system() == "Darwin":
-			os.system("open -a " + executablePath)
+			os.system("open -a " + executablePath.replace(" ", "\ "))
 		elif platform.system() == "Linux":
-			os.system("\"" + executablePath + "\" &")
+			os.system("\"" + executablePath.replace(" ", "\ ") + "\" &")
 		return True
 	else:
 		mel.eval("warning(\"sIBL_GUI | No sIBL_GUI executable path defined!\");")

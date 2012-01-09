@@ -1,8 +1,13 @@
-sIBL_GUI For Maya - 2.0.1
+sIBL_GUI For Maya - 2.0.2
 =========================
 
 Change Log
 ==========
+
+2.0.2
+-----
+
+-  Ensured that space in executable name doesn't prevent application launch in Mac Os X and Linux.
 
 2.0.1
 -----
