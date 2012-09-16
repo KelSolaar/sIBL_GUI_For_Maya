@@ -3,8 +3,8 @@ echo ----------------------------------------------------------------
 echo sIBL_GUI For Maya - Files Gathering
 echo ----------------------------------------------------------------
 
-export UTILITIES=/Users/KelSolaar/Documents/Developement/sIBL_GUI/utilities
-export PROJECT=/Users/KelSolaar/Documents/Developement/sIBL_GUI_For_Maya
+export UTILITIES=/Users/KelSolaar/Documents/Development/sIBL_GUI/utilities
+export PROJECT=/Users/KelSolaar/Documents/Development/sIBL_GUI_For_Maya
 
 export SOURCE=$PROJECT/src/
 export RELEASES=$PROJECT/releases/

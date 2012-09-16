@@ -89,7 +89,7 @@ Changes
 1.0.0
 -----
 
--  Initial Release of sIBL_GUI For Maya.
+-  Initial release of sIBL_GUI For Maya.
 
 .. .about
 
