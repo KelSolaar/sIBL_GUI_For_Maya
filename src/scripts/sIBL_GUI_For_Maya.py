@@ -55,7 +55,7 @@ APPLICATION_THREAD_URL = "http://www.hdrlabs.com/cgi-bin/forum/YaBB.pl?num=12716
 #**********************************************************************************************************************
 class Environment(object):
 	"""
-	This class provides methods to manipulate environment variables.
+	Defines methods to manipulate environment variables.
 	"""
 
 	def __init__(self, variable=None):
