@@ -60,7 +60,7 @@ class Environment(object):
 
 	def __init__(self, variable=None):
 		"""
-		This method initializes the class.
+		Initializes the class.
 
 		:param variable: Variable to manipulate. ( String )
 		"""
@@ -69,7 +69,7 @@ class Environment(object):
 
 	def getValue(self):
 		"""
-		This methods returns given environment variable value.
+		Returns given environment variable value.
 
 		:return: Variable value. ( String )
 		"""
@@ -79,28 +79,28 @@ class Environment(object):
 
 def _setExecutablePathOptionVar():
 	"""
-	This definition sets **executablePath** optionVar.
+	Sets **executablePath** optionVar.
 	"""
 
 	_setOptionVar("sIBL_GUI_executablePath", cmds.textField("Executable_Path_textField", query=True, text=True))
 
 def _setLoaderScriptPathOptionVar():
 	"""
-	This definition sets **sIBL_GUI_loaderScriptPath** optionVar.
+	Sets **sIBL_GUI_loaderScriptPath** optionVar.
 	"""
 
 	_setOptionVar("sIBL_GUI_loaderScriptPath", cmds.textField("Loader_Script_Path_textField", query=True, text=True))
 
 def _setCommandPortOptionVar():
 	"""
-	This definition sets **sIBL_GUI_commandPort** optionVar.
+	Sets **sIBL_GUI_commandPort** optionVar.
 	"""
 
 	_setOptionVar("sIBL_GUI_commandPort", cmds.intSliderGrp("Command_Port_intSliderGrp", query=True, value=True))
 
 def _setOptionVar(name, value):
 	"""
-	This definition stores given optionVar with given value.
+	Stores given optionVar with given value.
 	
 	:param name: OptionVar name. ( String )
 	:param value: OptionVar value. ( Object )
@@ -110,7 +110,7 @@ def _setOptionVar(name, value):
 
 def _openUrl(url):
 	"""
-	This definition opens given url.
+	Opens given url.
 
 	:param url: Url to open. ( String )
 	"""
@@ -119,7 +119,7 @@ def _openUrl(url):
 
 def _Executable_Path_button__command(state=None):
 	"""
-	This definition is triggered by **Executable_Path_button** widget.
+	Defines the callback triggered by **Executable_Path_button** widget.
 
 	:param state: Button state. ( Boolean )
 	"""
@@ -137,7 +137,7 @@ def _Executable_Path_button__command(state=None):
 
 def _Executable_Path_textField__changeCommand(value):
 	"""
-	This definition is triggered by **Executable_Path_textField** widget.
+	Defines the callback triggered by **Executable_Path_textField** widget.
 
 	:param value: Value. ( String )
 	"""
@@ -152,7 +152,7 @@ def _Executable_Path_textField__changeCommand(value):
 
 def _Loader_Script_Path_button__command(state=None):
 	"""
-	This definition is triggered by **Loader_Script_Path_button** widget.
+	Defines the callback triggered by **Loader_Script_Path_button** widget.
 
 	:param state: Button state. ( Boolean )
 	"""
@@ -167,7 +167,7 @@ def _Loader_Script_Path_button__command(state=None):
 
 def _Loader_Script_Path_textField__changeCommand(value):
 	"""
-	This definition is triggered by **_Loader_Script_Path_textField** widget.
+	Defines the callback triggered by **_Loader_Script_Path_textField** widget.
 
 	:param value: Value. ( String )
 	"""
@@ -179,7 +179,7 @@ def _Loader_Script_Path_textField__changeCommand(value):
 
 def _Command_Port_intSliderGrp__changeCommand(value):
 	"""
-	This definition is triggered by **Command_Port_intSliderGrp** widget.
+	Defines the callback triggered by **Command_Port_intSliderGrp** widget.
 
 	:param value: Value. ( Float )
 	"""
@@ -188,7 +188,7 @@ def _Command_Port_intSliderGrp__changeCommand(value):
 
 def _Command_Port_button__command(state=None):
 	"""
-	This definition opens the command port.
+	Opens the command port.
 
 	:param state: Button state. ( Boolean )
 	"""
@@ -202,7 +202,7 @@ def _Command_Port_button__command(state=None):
 
 def _Get_Application_button__command(state=None):
 	"""
-	This definition opens Online Repository.
+	Opens Online Repository.
 
 	:param state: Button state. ( Boolean )
 	"""
@@ -218,7 +218,7 @@ def _Get_Application_button__command(state=None):
 
 def _HDRlabs_button__command(state=None):
 	"""
-	This definition opens HDRLabs thread.
+	Opens HDRLabs thread.
 
 	:param state: Button state. ( Boolean )
 	"""
@@ -227,7 +227,7 @@ def _HDRlabs_button__command(state=None):
 
 def _Application_Thread_button__command(state=None):
 	"""
-	This definition opens sIBL_GUI thread.
+	Opens sIBL_GUI thread.
 
 	:param state: Button state. ( Boolean )
 	"""
@@ -236,7 +236,7 @@ def _Application_Thread_button__command(state=None):
 
 def _sIBL_GUI_For_Maya_window():
 	"""
-	This definition launches **sIBL_GUI For Maya Preferences** window.
+	Launches **sIBL_GUI For Maya Preferences** window.
 	"""
 
 	cmds.windowPref(enableAll=False)
@@ -300,7 +300,7 @@ def _sIBL_GUI_For_Maya_window():
 
 def openPreferences():
 	"""
-	This definition launches **sIBL_GUI For Maya - Preferences** window.
+	Launches **sIBL_GUI For Maya - Preferences** window.
 	"""
 
 	_sIBL_GUI_For_Maya_window()
@@ -308,7 +308,7 @@ def openPreferences():
 
 def launchApplication():
 	"""
-	This definition launches **sIBL_GUI**.
+	Launches **sIBL_GUI**.
 
 	:return: Definition sucess. ( Boolean )
 	"""
@@ -329,7 +329,7 @@ def launchApplication():
 
 def executeLoaderScript():
 	"""
-	This definition executes **sIBL_GUI** Loader Script.
+	Executes **sIBL_GUI** Loader Script.
 
 	:return: Definition sucess. ( Boolean )
 	"""
@@ -358,7 +358,7 @@ def executeLoaderScript():
 
 def deleteSmartIblNodes():
 	"""
-	This definition deletes **Smart Ibl** and **Lightsmith** lights nodes.
+	Deletes **Smart Ibl** and **Lightsmith** lights nodes.
 	
 	:return: Definition sucess. ( Boolean )
 	"""
