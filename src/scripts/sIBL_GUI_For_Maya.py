@@ -62,7 +62,8 @@ class Environment(object):
 		"""
 		Initializes the class.
 
-		:param variable: Variable to manipulate. ( String )
+		:param variable: Variable to manipulate.
+		:type variable: str
 		"""
 
 		self._variable = variable
@@ -71,7 +72,8 @@ class Environment(object):
 		"""
 		Returns given environment variable value.
 
-		:return: Variable value. ( String )
+		:return: Variable value.
+		:rtype: str
 		"""
 
 		if self._variable:
@@ -102,8 +104,10 @@ def _setOptionVar(name, value):
 	"""
 	Stores given optionVar with given value.
 	
-	:param name: OptionVar name. ( String )
-	:param value: OptionVar value. ( Object )
+	:param name: OptionVar name.
+	:type name: str
+	:param value: OptionVar value.
+	:type value: object
 	"""
 
 	cmds.optionVar(sv=(name, value))
@@ -112,7 +116,8 @@ def _openUrl(url):
 	"""
 	Opens given url.
 
-	:param url: Url to open. ( String )
+	:param url: Url to open.
+	:type url: str
 	"""
 
 	cmds.launch(web=url)
@@ -121,7 +126,8 @@ def _Executable_Path_button__command(state=None):
 	"""
 	Defines the callback triggered by **Executable_Path_button** widget.
 
-	:param state: Button state. ( Boolean )
+	:param state: Button state.
+	:type state: bool
 	"""
 
 	fileName = cmds.fileDialog2(ds=2, fileFilter="All Files (*.*)", fm=(not platform.system() == "Darwin" and 1 or 3))
@@ -139,7 +145,8 @@ def _Executable_Path_textField__changeCommand(value):
 	"""
 	Defines the callback triggered by **Executable_Path_textField** widget.
 
-	:param value: Value. ( String )
+	:param value: Value.
+	:type value: str
 	"""
 
 	if os.path.exists(value) and \
@@ -154,7 +161,8 @@ def _Loader_Script_Path_button__command(state=None):
 	"""
 	Defines the callback triggered by **Loader_Script_Path_button** widget.
 
-	:param state: Button state. ( Boolean )
+	:param state: Button state.
+	:type state: bool
 	"""
 
 	fileName = cmds.fileDialog2(ds=2, fileFilter="All Files (*.*)", fm=4)
@@ -169,7 +177,8 @@ def _Loader_Script_Path_textField__changeCommand(value):
 	"""
 	Defines the callback triggered by **_Loader_Script_Path_textField** widget.
 
-	:param value: Value. ( String )
+	:param value: Value.
+	:type value: str
 	"""
 
 	if os.path.exists(value):
@@ -181,7 +190,8 @@ def _Command_Port_intSliderGrp__changeCommand(value):
 	"""
 	Defines the callback triggered by **Command_Port_intSliderGrp** widget.
 
-	:param value: Value. ( Float )
+	:param value: Value.
+	:type value: float
 	"""
 
 	_setCommandPortOptionVar()
@@ -190,7 +200,8 @@ def _Command_Port_button__command(state=None):
 	"""
 	Opens the command port.
 
-	:param state: Button state. ( Boolean )
+	:param state: Button state.
+	:type state: bool
 	"""
 
 	try:
@@ -204,7 +215,8 @@ def _Get_Application_button__command(state=None):
 	"""
 	Opens Online Repository.
 
-	:param state: Button state. ( Boolean )
+	:param state: Button state.
+	:type state: bool
 	"""
 
 	if platform.system() == "Windows" or platform.system() == "Microsoft":
@@ -220,7 +232,8 @@ def _HDRlabs_button__command(state=None):
 	"""
 	Opens HDRLabs thread.
 
-	:param state: Button state. ( Boolean )
+	:param state: Button state.
+	:type state: bool
 	"""
 
 	_openUrl(HDRLABS_URL)
@@ -229,7 +242,8 @@ def _Application_Thread_button__command(state=None):
 	"""
 	Opens sIBL_GUI thread.
 
-	:param state: Button state. ( Boolean )
+	:param state: Button state.
+	:type state: bool
 	"""
 
 	_openUrl(APPLICATION_THREAD_URL)
@@ -310,7 +324,8 @@ def launchApplication():
 	"""
 	Launches **sIBL_GUI**.
 
-	:return: Definition sucess. ( Boolean )
+	:return: Definition sucess.
+	:rtype: bool
 	"""
 
 	executablePath = cmds.optionVar(q="sIBL_GUI_executablePath")
@@ -331,7 +346,8 @@ def executeLoaderScript():
 	"""
 	Executes **sIBL_GUI** Loader Script.
 
-	:return: Definition sucess. ( Boolean )
+	:return: Definition sucess.
+	:rtype: bool
 	"""
 
 	loaderScriptPath = cmds.optionVar(q="sIBL_GUI_loaderScriptPath")
@@ -360,7 +376,8 @@ def deleteSmartIblNodes():
 	"""
 	Deletes **Smart Ibl** and **Lightsmith** lights nodes.
 	
-	:return: Definition sucess. ( Boolean )
+	:return: Definition sucess.
+	:rtype: bool
 	"""
 
 	nodes = []
