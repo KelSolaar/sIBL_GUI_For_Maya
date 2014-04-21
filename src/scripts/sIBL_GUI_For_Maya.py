@@ -130,13 +130,13 @@ def _Executable_Path_button__command(state=None):
 	:type state: bool
 	"""
 
-	fileName = cmds.fileDialog2(ds=2, fileFilter="All Files (*.*)", fm=(not platform.system() == "Darwin" and 1 or 3))
-	fileName = fileName and fileName[0] or None
-	if not fileName:
+	file_name = cmds.fileDialog2(ds=2, fileFilter="All Files (*.*)", fm=(not platform.system() == "Darwin" and 1 or 3))
+	file_name = file_name and file_name[0] or None
+	if not file_name:
 		return
 
-	if fileName.endswith("sIBL_GUI.exe") or re.search("sIBL_GUI[\d ]*\.app", fileName) or fileName.endswith("sIBL_GUI"):
-		cmds.textField("Executable_Path_textField", edit=True, text=fileName)
+	if file_name.endswith("sIBL_GUI.exe") or re.search("sIBL_GUI[\d ]*\.app", file_name) or file_name.endswith("sIBL_GUI"):
+		cmds.textField("Executable_Path_textField", edit=True, text=file_name)
 		_setExecutablePathOptionVar()
 	else:
 		mel.eval("warning(\"sIBL_GUI | Chosen executable path is invalid!\");")
@@ -165,12 +165,12 @@ def _Loader_Script_Path_button__command(state=None):
 	:type state: bool
 	"""
 
-	fileName = cmds.fileDialog2(ds=2, fileFilter="All Files (*.*)", fm=4)
-	fileName = fileName and fileName[0] or None
-	if not fileName:
+	file_name = cmds.fileDialog2(ds=2, fileFilter="All Files (*.*)", fm=4)
+	file_name = file_name and file_name[0] or None
+	if not file_name:
 		return
 
-	cmds.textField("Loader_Script_Path_textField", edit=True, text=fileName)
+	cmds.textField("Loader_Script_Path_textField", edit=True, text=file_name)
 	_setLoaderScriptPathOptionVar()
 
 def _Loader_Script_Path_textField__changeCommand(value):
