@@ -23,7 +23,7 @@ global proc shelf_sIBL_GUI () {
         -style "iconOnly"
         -marginWidth 1
         -marginHeight 1
-        -command "import sIBL_GUI_For_Maya\nreload( sIBL_GUI_For_Maya )\nsIBL_GUI_For_Maya.openPreferences()"
+        -command "import sIBL_GUI_For_Maya\nreload(sIBL_GUI_For_Maya)\nsIBL_GUI_For_Maya.open_preferences()"
         -sourceType "python"
         -commandRepeatable 1
     ;
@@ -47,7 +47,7 @@ global proc shelf_sIBL_GUI () {
         -style "iconOnly"
         -marginWidth 1
         -marginHeight 1
-        -command "import sIBL_GUI_For_Maya\nreload( sIBL_GUI_For_Maya )\nsIBL_GUI_For_Maya.launchApplication()"
+        -command "import sIBL_GUI_For_Maya\nreload(sIBL_GUI_For_Maya)\nsIBL_GUI_For_Maya.launch_application()"
         -sourceType "python"
         -commandRepeatable 1
     ;
@@ -71,7 +71,7 @@ global proc shelf_sIBL_GUI () {
         -style "iconOnly"
         -marginWidth 1
         -marginHeight 1
-        -command "import sIBL_GUI_For_Maya\nreload( sIBL_GUI_For_Maya )\nsIBL_GUI_For_Maya.executeLoaderScript()"
+        -command "import sIBL_GUI_For_Maya\nreload(sIBL_GUI_For_Maya)\nsIBL_GUI_For_Maya.execute_loader_script()"
         -sourceType "python"
         -commandRepeatable 1
     ;
@@ -95,7 +95,7 @@ global proc shelf_sIBL_GUI () {
         -style "iconOnly"
         -marginWidth 1
         -marginHeight 1
-        -command "import sIBL_GUI_For_Maya\nreload( sIBL_GUI_For_Maya )\nsIBL_GUI_For_Maya.deleteSmartIblNodes()"
+        -command "import sIBL_GUI_For_Maya\nreload(sIBL_GUI_For_Maya)\nsIBL_GUI_For_Maya.delete_smart_ibl_nodes()"
         -sourceType "python"
         -commandRepeatable 1
     ;

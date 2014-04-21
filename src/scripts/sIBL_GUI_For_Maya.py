@@ -39,10 +39,10 @@ __all__ = ["HDRLABS_URL",
 		"DARWIN_RELEASE_URL",
 		"LINUX_RELEASE_URL",
 		"APPLICATION_THREAD_URL",
-		"openPreferences",
-		"launchApplication",
-		"executeLoaderScript",
-		"deleteSmartIblNodes"]
+        "open_preferences",
+        "launch_application",
+        "execute_loader_script",
+        "delete_smart_ibl_nodes"]
 
 HDRLABS_URL = "http://www.hdrlabs.com"
 WINDOWS_RELEASE_URL = "http://kelsolaar.hdrlabs.com/?dir=./sIBL_GUI/Repository/Builds/Windows"
@@ -68,7 +68,7 @@ class Environment(object):
 
 		self._variable = variable
 
-	def getValue(self):
+	def get_value(self):
 		"""
 		Returns given environment variable value.
 
@@ -79,31 +79,31 @@ class Environment(object):
 		if self._variable:
 			return os.environ.get(self._variable)
 
-def _setExecutablePathOptionVar():
+def _set_executable_path_option_var():
 	"""
 	Sets **executablePath** optionVar.
 	"""
 
-	_setOptionVar("sIBL_GUI_executablePath", cmds.textField("Executable_Path_textField", query=True, text=True))
+	_set_option_var("sIBL_GUI_executablePath", cmds.textField("Executable_Path_textField", query=True, text=True))
 
-def _setLoaderScriptPathOptionVar():
+def _set_loader_script_path_option_var():
 	"""
-	Sets **sIBL_GUI_loaderScriptPath** optionVar.
+	Sets **sIBL_GUI_loader_script_path** optionVar.
 	"""
 
-	_setOptionVar("sIBL_GUI_loaderScriptPath", cmds.textField("Loader_Script_Path_textField", query=True, text=True))
+	_set_option_var("sIBL_GUI_loader_script_path", cmds.textField("Loader_Script_Path_textField", query=True, text=True))
 
-def _setCommandPortOptionVar():
+def _set_command_port_option_var():
 	"""
 	Sets **sIBL_GUI_commandPort** optionVar.
 	"""
 
-	_setOptionVar("sIBL_GUI_commandPort", cmds.intSliderGrp("Command_Port_intSliderGrp", query=True, value=True))
+	_set_option_var("sIBL_GUI_commandPort", cmds.intSliderGrp("Command_Port_intSliderGrp", query=True, value=True))
 
-def _setOptionVar(name, value):
+def _set_option_var(name, value):
 	"""
 	Stores given optionVar with given value.
-	
+
 	:param name: OptionVar name.
 	:type name: str
 	:param value: OptionVar value.
@@ -112,7 +112,7 @@ def _setOptionVar(name, value):
 
 	cmds.optionVar(sv=(name, value))
 
-def _openUrl(url):
+def _open_url(url):
 	"""
 	Opens given url.
 
@@ -130,14 +130,14 @@ def _Executable_Path_button__command(state=None):
 	:type state: bool
 	"""
 
-	fileName = cmds.fileDialog2(ds=2, fileFilter="All Files (*.*)", fm=(not platform.system() == "Darwin" and 1 or 3))
-	fileName = fileName and fileName[0] or None
-	if not fileName:
+	file_name = cmds.fileDialog2(ds=2, fileFilter="All Files (*.*)", fm=(not platform.system() == "Darwin" and 1 or 3))
+	file_name = file_name and file_name[0] or None
+	if not file_name:
 		return
 
-	if fileName.endswith("sIBL_GUI.exe") or re.search("sIBL_GUI[\d ]*\.app", fileName) or fileName.endswith("sIBL_GUI"):
-		cmds.textField("Executable_Path_textField", edit=True, text=fileName)
-		_setExecutablePathOptionVar()
+	if file_name.endswith("sIBL_GUI.exe") or re.search("sIBL_GUI[\d ]*\.app", file_name) or file_name.endswith("sIBL_GUI"):
+		cmds.textField("Executable_Path_textField", edit=True, text=file_name)
+		_set_executable_path_option_var()
 	else:
 		mel.eval("warning(\"sIBL_GUI | Chosen executable path is invalid!\");")
 
@@ -153,7 +153,7 @@ def _Executable_Path_textField__changeCommand(value):
 		(value.endswith("sIBL_GUI.exe") or \
 		value.endswith("sIBL_GUI.app") or \
 		value.endswith("sIBL_GUI")):
-		_setExecutablePathOptionVar()
+		_set_executable_path_option_var()
 	else:
 		mel.eval("warning(\"sIBL_GUI | Chosen executable path is invalid!\");")
 
@@ -165,13 +165,13 @@ def _Loader_Script_Path_button__command(state=None):
 	:type state: bool
 	"""
 
-	fileName = cmds.fileDialog2(ds=2, fileFilter="All Files (*.*)", fm=4)
-	fileName = fileName and fileName[0] or None
-	if not fileName:
+	file_name = cmds.fileDialog2(ds=2, fileFilter="All Files (*.*)", fm=4)
+	file_name = file_name and file_name[0] or None
+	if not file_name:
 		return
 
-	cmds.textField("Loader_Script_Path_textField", edit=True, text=fileName)
-	_setLoaderScriptPathOptionVar()
+	cmds.textField("Loader_Script_Path_textField", edit=True, text=file_name)
+	_set_loader_script_path_option_var()
 
 def _Loader_Script_Path_textField__changeCommand(value):
 	"""
@@ -182,7 +182,7 @@ def _Loader_Script_Path_textField__changeCommand(value):
 	"""
 
 	if os.path.exists(value):
-		_setLoaderScriptPathOptionVar()
+		_set_loader_script_path_option_var()
 	else:
 		mel.eval("warning(\"sIBL_GUI | Chosen Loader Script path is invalid!\");")
 
@@ -194,7 +194,7 @@ def _Command_Port_intSliderGrp__changeCommand(value):
 	:type value: float
 	"""
 
-	_setCommandPortOptionVar()
+	_set_command_port_option_var()
 
 def _Command_Port_button__command(state=None):
 	"""
@@ -209,7 +209,7 @@ def _Command_Port_button__command(state=None):
 	except:
 		mel.eval("warning(\"sIBL_GUI | Command port is already open or can't be opened!\");")
 
-	_setCommandPortOptionVar()
+	_set_command_port_option_var()
 
 def _Get_Application_button__command(state=None):
 	"""
@@ -226,7 +226,7 @@ def _Get_Application_button__command(state=None):
 	elif platform.system() == "Linux":
 		url = LINUX_RELEASE_URL
 
-	_openUrl(url)
+	_open_url(url)
 
 def _HDRlabs_button__command(state=None):
 	"""
@@ -236,7 +236,7 @@ def _HDRlabs_button__command(state=None):
 	:type state: bool
 	"""
 
-	_openUrl(HDRLABS_URL)
+	_open_url(HDRLABS_URL)
 
 def _Application_Thread_button__command(state=None):
 	"""
@@ -246,7 +246,7 @@ def _Application_Thread_button__command(state=None):
 	:type state: bool
 	"""
 
-	_openUrl(APPLICATION_THREAD_URL)
+	_open_url(APPLICATION_THREAD_URL)
 
 def _sIBL_GUI_For_Maya_window():
 	"""
@@ -286,9 +286,9 @@ def _sIBL_GUI_For_Maya_window():
 	cmds.setParent(upLevel=True)
 	cmds.setParent(upLevel=True)
 
-	sIBL_GUI_loaderScriptPath = cmds.optionVar(q="sIBL_GUI_loaderScriptPath")
-	if sIBL_GUI_loaderScriptPath:
-		cmds.textField("Loader_Script_Path_textField", edit=True, text=sIBL_GUI_loaderScriptPath)
+	sIBL_GUI_loader_script_path = cmds.optionVar(q="sIBL_GUI_loader_script_path")
+	if sIBL_GUI_loader_script_path:
+		cmds.textField("Loader_Script_Path_textField", edit=True, text=sIBL_GUI_loader_script_path)
 
 	cmds.frameLayout(label="Command Port", cll=False, li=4, borderStyle="etchedOut", mh=4, mw=4)
 	cmds.rowLayout(numberOfColumns=2, adjustableColumn=1, columnAlign2=["center", "center"], columnAttach=[(1, "both", horizontalSpacing), (2, "both", horizontalSpacing)])
@@ -312,7 +312,7 @@ def _sIBL_GUI_For_Maya_window():
 	cmds.showWindow("_sIBL_GUI_For_Maya_window")
 	cmds.windowPref(enableAll=True)
 
-def openPreferences():
+def open_preferences():
 	"""
 	Launches **sIBL_GUI For Maya - Preferences** window.
 	"""
@@ -320,7 +320,7 @@ def openPreferences():
 	_sIBL_GUI_For_Maya_window()
 	return True
 
-def launchApplication():
+def launch_application():
 	"""
 	Launches **sIBL_GUI**.
 
@@ -328,21 +328,21 @@ def launchApplication():
 	:rtype: bool
 	"""
 
-	executablePath = cmds.optionVar(q="sIBL_GUI_executablePath")
-	if executablePath:
+	executable_path = cmds.optionVar(q="sIBL_GUI_executablePath")
+	if executable_path:
 		if platform.system() == "Windows" or platform.system() == "Microsoft":
-			os.system("start /D" + "\"" + os.path.dirname(executablePath) + "\"" + " " + executablePath.replace(" ", "\" \""))
+			os.system("start /D" + "\"" + os.path.dirname(executable_path) + "\"" + " " + executable_path.replace(" ", "\" \""))
 		elif platform.system() == "Darwin":
-			os.system("open -a " + executablePath.replace(" ", "\ "))
+			os.system("open -a " + executable_path.replace(" ", "\ "))
 		elif platform.system() == "Linux":
-			os.system("\"" + executablePath.replace(" ", "\ ") + "\" &")
+			os.system("\"" + executable_path.replace(" ", "\ ") + "\" &")
 		return True
 	else:
 		mel.eval("warning(\"sIBL_GUI | No sIBL_GUI executable path defined!\");")
 		cmds.confirmDialog(title="sIBL_GUI | Warning", message="No sIBL_GUI executable path defined!\nPlease define one in preferences!", button=["Ok"], defaultButton="Ok")
-		openPreferences()
+		open_preferences()
 
-def executeLoaderScript():
+def execute_loader_script():
 	"""
 	Executes **sIBL_GUI** Loader Script.
 
@@ -350,15 +350,15 @@ def executeLoaderScript():
 	:rtype: bool
 	"""
 
-	loaderScriptPath = cmds.optionVar(q="sIBL_GUI_loaderScriptPath")
-	if loaderScriptPath:
-		if os.path.exists(loaderScriptPath):
-			if re.search(r"\.mel$", loaderScriptPath):
-				mel.eval("source \"" + loaderScriptPath + "\"")
-			elif re.search(r"\.pyc?$", loaderScriptPath):
-				path = os.path.dirname(loaderScriptPath)
+	loader_script_path = cmds.optionVar(q="sIBL_GUI_loader_script_path")
+	if loader_script_path:
+		if os.path.exists(loader_script_path):
+			if re.search(r"\.mel$", loader_script_path):
+				mel.eval("source \"" + loader_script_path + "\"")
+			elif re.search(r"\.pyc?$", loader_script_path):
+				path = os.path.dirname(loader_script_path)
 				path not in sys.path and sys.path.append(path)
-				module = os.path.splitext(os.path.basename(loaderScriptPath))[0]
+				module = os.path.splitext(os.path.basename(loader_script_path))[0]
 				import_ = __import__(module)
 				reload(import_)
 				if hasattr(import_, "Setup"):
@@ -370,12 +370,12 @@ def executeLoaderScript():
 	else:
 		mel.eval("warning(\"sIBL_GUI | No Loader Script found!\");")
 		cmds.confirmDialog(title="sIBL_GUI | Warning", message="No Loader Script found!\nPlease define one in preferences!", button=["Ok"], defaultButton="Ok")
-		openPreferences()
+		open_preferences()
 
-def deleteSmartIblNodes():
+def delete_smart_ibl_nodes():
 	"""
 	Deletes **Smart Ibl** and **Lightsmith** lights nodes.
-	
+
 	:return: Definition sucess.
 	:rtype: bool
 	"""
@@ -386,15 +386,15 @@ def deleteSmartIblNodes():
 		prefixes = []
 		for node in selection:
 			relatives = [node]
-			nodeRelatives = cmds.listRelatives(node, f=True, ad=True)
-			nodeRelatives and relatives.extend(nodeRelatives)
+			node_relatives = cmds.listRelatives(node, f=True, ad=True)
+			node_relatives and relatives.extend(node_relatives)
 			for relative in relatives:
 				if re.search(r"\w*_Root$", relative):
 					if relative.replace("_Root", "_Support").split("|")[-1] in cmds.listRelatives(relative, ad=True):
 						prefixes.append(relative.replace("_Root", "").split("|")[-1])
 		for prefix in prefixes:
-			userChoice = cmds.confirmDialog(title="sIBL_GUI", message="Nodes with following prefix : '%s' are planned for deletion! Would you like to proceed?" % prefix, button=["Yes", "No"], defaultButton="Yes", cancelButton="No", dismissString="No")
-			if userChoice == "Yes":
+			user_choice = cmds.confirmDialog(title="sIBL_GUI", message="Nodes with following prefix : '%s' are planned for deletion! Would you like to proceed?" % prefix, button=["Yes", "No"], defaultButton="Yes", cancelButton="No", dismissString="No")
+			if user_choice == "Yes":
 				nodes.extend(sorted(cmds.ls(prefix + "*", l=True)))
 	else:
 		result = cmds.promptDialog(title="sIBL_GUI | Nodes Deletion",
