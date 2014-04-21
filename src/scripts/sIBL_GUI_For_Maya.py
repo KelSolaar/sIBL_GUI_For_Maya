@@ -68,7 +68,7 @@ class Environment(object):
 
 		self._variable = variable
 
-	def getValue(self):
+	def get_value(self):
 		"""
 		Returns given environment variable value.
 
