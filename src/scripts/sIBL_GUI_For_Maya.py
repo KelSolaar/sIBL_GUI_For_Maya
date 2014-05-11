@@ -29,20 +29,21 @@ __email__ = "thomas.mansencal@gmail.com"
 __status__ = "Production"
 
 __all__ = ["HDRLABS_URL",
-        "WINDOWS_RELEASE_URL",
-        "DARWIN_RELEASE_URL",
-        "LINUX_RELEASE_URL",
-        "APPLICATION_THREAD_URL",
-        "open_preferences",
-        "launch_application",
-        "execute_loader_script",
-        "delete_smart_ibl_nodes"]
+           "WINDOWS_RELEASE_URL",
+           "DARWIN_RELEASE_URL",
+           "LINUX_RELEASE_URL",
+           "APPLICATION_THREAD_URL",
+           "open_preferences",
+           "launch_application",
+           "execute_loader_script",
+           "delete_smart_ibl_nodes"]
 
 HDRLABS_URL = "http://www.hdrlabs.com"
 WINDOWS_RELEASE_URL = "http://kelsolaar.hdrlabs.com/?dir=./sIBL_GUI/Repository/Builds/Windows"
 DARWIN_RELEASE_URL = "http://kelsolaar.hdrlabs.com/?dir=./sIBL_GUI/Repository/Builds/Darwin"
 LINUX_RELEASE_URL = "http://kelsolaar.hdrlabs.com/?dir=./sIBL_GUI/Repository/Builds/Linux"
 APPLICATION_THREAD_URL = "http://www.hdrlabs.com/cgi-bin/forum/YaBB.pl?num=1271609371"
+
 
 class Environment(object):
     """
@@ -70,6 +71,7 @@ class Environment(object):
         if self._variable:
             return os.environ.get(self._variable)
 
+
 def _set_executable_path_option_var():
     """
     Sets **executablePath** optionVar.
@@ -77,12 +79,15 @@ def _set_executable_path_option_var():
 
     _set_option_var("sIBL_GUI_executablePath", cmds.textField("Executable_Path_textField", query=True, text=True))
 
+
 def _set_loader_script_path_option_var():
     """
     Sets **sIBL_GUI_loader_script_path** optionVar.
     """
 
-    _set_option_var("sIBL_GUI_loader_script_path", cmds.textField("Loader_Script_Path_textField", query=True, text=True))
+    _set_option_var("sIBL_GUI_loader_script_path", cmds.textField(
+        "Loader_Script_Path_textField", query=True, text=True))
+
 
 def _set_command_port_option_var():
     """
@@ -90,6 +95,7 @@ def _set_command_port_option_var():
     """
 
     _set_option_var("sIBL_GUI_commandPort", cmds.intSliderGrp("Command_Port_intSliderGrp", query=True, value=True))
+
 
 def _set_option_var(name, value):
     """
@@ -103,6 +109,7 @@ def _set_option_var(name, value):
 
     cmds.optionVar(sv=(name, value))
 
+
 def _open_url(url):
     """
     Opens given url.
@@ -112,6 +119,7 @@ def _open_url(url):
     """
 
     cmds.launch(web=url)
+
 
 def _Executable_Path_button__command(state=None):
     """
@@ -126,11 +134,13 @@ def _Executable_Path_button__command(state=None):
     if not file_name:
         return
 
-    if file_name.endswith("sIBL_GUI.exe") or re.search("sIBL_GUI[\d ]*\.app", file_name) or file_name.endswith("sIBL_GUI"):
+    if file_name.endswith("sIBL_GUI.exe") or re.search("sIBL_GUI[\d ]*\.app", file_name) or file_name.endswith(
+            "sIBL_GUI"):
         cmds.textField("Executable_Path_textField", edit=True, text=file_name)
         _set_executable_path_option_var()
     else:
         mel.eval("warning(\"sIBL_GUI | Chosen executable path is invalid!\");")
+
 
 def _Executable_Path_textField__changeCommand(value):
     """
@@ -141,12 +151,13 @@ def _Executable_Path_textField__changeCommand(value):
     """
 
     if os.path.exists(value) and \
-        (value.endswith("sIBL_GUI.exe") or \
-        value.endswith("sIBL_GUI.app") or \
-        value.endswith("sIBL_GUI")):
+            (value.endswith("sIBL_GUI.exe") or
+                 value.endswith("sIBL_GUI.app") or
+                 value.endswith("sIBL_GUI")):
         _set_executable_path_option_var()
     else:
         mel.eval("warning(\"sIBL_GUI | Chosen executable path is invalid!\");")
+
 
 def _Loader_Script_Path_button__command(state=None):
     """
@@ -164,6 +175,7 @@ def _Loader_Script_Path_button__command(state=None):
     cmds.textField("Loader_Script_Path_textField", edit=True, text=file_name)
     _set_loader_script_path_option_var()
 
+
 def _Loader_Script_Path_textField__changeCommand(value):
     """
     Defines the callback triggered by **_Loader_Script_Path_textField** widget.
@@ -177,6 +189,7 @@ def _Loader_Script_Path_textField__changeCommand(value):
     else:
         mel.eval("warning(\"sIBL_GUI | Chosen Loader Script path is invalid!\");")
 
+
 def _Command_Port_intSliderGrp__changeCommand(value):
     """
     Defines the callback triggered by **Command_Port_intSliderGrp** widget.
@@ -187,6 +200,7 @@ def _Command_Port_intSliderGrp__changeCommand(value):
 
     _set_command_port_option_var()
 
+
 def _Command_Port_button__command(state=None):
     """
     Opens the command port.
@@ -196,11 +210,13 @@ def _Command_Port_button__command(state=None):
     """
 
     try:
-        cmds.commandPort(name="127.0.0.1:" + str(cmds.intSliderGrp("Command_Port_intSliderGrp", query=True, value=True)))
+        cmds.commandPort(
+            name="127.0.0.1:" + str(cmds.intSliderGrp("Command_Port_intSliderGrp", query=True, value=True)))
     except:
         mel.eval("warning(\"sIBL_GUI | Command port is already open or can't be opened!\");")
 
     _set_command_port_option_var()
+
 
 def _Get_Application_button__command(state=None):
     """
@@ -219,6 +235,7 @@ def _Get_Application_button__command(state=None):
 
     _open_url(url)
 
+
 def _HDRlabs_button__command(state=None):
     """
     Opens HDRLabs thread.
@@ -229,6 +246,7 @@ def _HDRlabs_button__command(state=None):
 
     _open_url(HDRLABS_URL)
 
+
 def _Application_Thread_button__command(state=None):
     """
     Opens sIBL_GUI thread.
@@ -238,6 +256,7 @@ def _Application_Thread_button__command(state=None):
     """
 
     _open_url(APPLICATION_THREAD_URL)
+
 
 def _sIBL_GUI_For_Maya_window():
     """
@@ -250,8 +269,8 @@ def _sIBL_GUI_For_Maya_window():
         cmds.deleteUI("_sIBL_GUI_For_Maya_window")
 
     cmds.window("_sIBL_GUI_For_Maya_window",
-        title="sIBL_GUI For Maya - Preferences",
-        sizeable=False)
+                title="sIBL_GUI For Maya - Preferences",
+                sizeable=False)
 
     horizontalSpacing = 8
 
@@ -260,7 +279,8 @@ def _sIBL_GUI_For_Maya_window():
     cmds.picture(image="sIBL_GUI_Small_Logo.png")
 
     cmds.frameLayout(label="sIBL_GUI Executable Path", cll=False, li=4, borderStyle="etchedOut", mh=4, mw=4)
-    cmds.rowLayout(numberOfColumns=2, adjustableColumn=1, columnAlign2=["center", "center"], columnAttach=[(1, "both", horizontalSpacing), (2, "both", horizontalSpacing)])
+    cmds.rowLayout(numberOfColumns=2, adjustableColumn=1, columnAlign2=["center", "center"], columnAttach=[
+        (1, "both", horizontalSpacing), (2, "both", horizontalSpacing)])
     cmds.textField("Executable_Path_textField", cc=_Executable_Path_textField__changeCommand)
     cmds.button("Executable_Path_button", label="...", al="center", command=_Executable_Path_button__command)
     cmds.setParent(upLevel=True)
@@ -271,7 +291,8 @@ def _sIBL_GUI_For_Maya_window():
         cmds.textField("Executable_Path_textField", edit=True, text=executablePath)
 
     cmds.frameLayout(label="Loader Script Path", cll=False, li=4, borderStyle="etchedOut", mh=4, mw=4)
-    cmds.rowLayout(numberOfColumns=2, adjustableColumn=1, columnAlign2=["center", "center"], columnAttach=[(1, "both", horizontalSpacing), (2, "both", horizontalSpacing)])
+    cmds.rowLayout(numberOfColumns=2, adjustableColumn=1, columnAlign2=["center", "center"], columnAttach=[
+        (1, "both", horizontalSpacing), (2, "both", horizontalSpacing)])
     cmds.textField("Loader_Script_Path_textField", cc=_Loader_Script_Path_textField__changeCommand)
     cmds.button("Loader_Script_Path_button", label="...", al="center", command=_Loader_Script_Path_button__command)
     cmds.setParent(upLevel=True)
@@ -282,8 +303,10 @@ def _sIBL_GUI_For_Maya_window():
         cmds.textField("Loader_Script_Path_textField", edit=True, text=sIBL_GUI_loader_script_path)
 
     cmds.frameLayout(label="Command Port", cll=False, li=4, borderStyle="etchedOut", mh=4, mw=4)
-    cmds.rowLayout(numberOfColumns=2, adjustableColumn=1, columnAlign2=["center", "center"], columnAttach=[(1, "both", horizontalSpacing), (2, "both", horizontalSpacing)])
-    cmds.intSliderGrp("Command_Port_intSliderGrp", field=True, minValue=0, maxValue=65535, value=2048, cc=_Command_Port_intSliderGrp__changeCommand)
+    cmds.rowLayout(numberOfColumns=2, adjustableColumn=1, columnAlign2=["center", "center"], columnAttach=[
+        (1, "both", horizontalSpacing), (2, "both", horizontalSpacing)])
+    cmds.intSliderGrp("Command_Port_intSliderGrp", field=True, minValue=0, maxValue=65535,
+                      value=2048, cc=_Command_Port_intSliderGrp__changeCommand)
     cmds.button("Command_Port_button", label="Open Port", al="center", command=_Command_Port_button__command)
     cmds.setParent(upLevel=True)
     cmds.setParent(upLevel=True)
@@ -293,15 +316,19 @@ def _sIBL_GUI_For_Maya_window():
         cmds.intSliderGrp("Command_Port_intSliderGrp", edit=True, value=sIBL_GUI_commandPort)
 
     cmds.frameLayout(label="Online", cll=False, li=4, borderStyle="etchedOut", mh=4, mw=4)
-    cmds.rowLayout(numberOfColumns=3, adjustableColumn=3, columnAlign3=["center", "center", "center"], columnAttach=[(1, "both", horizontalSpacing), (2, "both", horizontalSpacing), (3, "both", horizontalSpacing)])
-    cmds.button("Get_Application_button", label="Get sIBL_GUI ...", al="center", command=_Get_Application_button__command)
+    cmds.rowLayout(numberOfColumns=3, adjustableColumn=3, columnAlign3=["center", "center", "center"], columnAttach=[
+        (1, "both", horizontalSpacing), (2, "both", horizontalSpacing), (3, "both", horizontalSpacing)])
+    cmds.button("Get_Application_button", label="Get sIBL_GUI ...",
+                al="center", command=_Get_Application_button__command)
     cmds.button("HDRlabs_button", label="Visit HDRLabs ...", al="center", command=_HDRlabs_button__command)
-    cmds.button("Application_Thread_button", label="Visit sIBL_GUI Thread ...", al="right", command=_Application_Thread_button__command)
+    cmds.button("Application_Thread_button", label="Visit sIBL_GUI Thread ...",
+                al="right", command=_Application_Thread_button__command)
     cmds.setParent(upLevel=True)
     cmds.setParent(upLevel=True)
 
     cmds.showWindow("_sIBL_GUI_For_Maya_window")
     cmds.windowPref(enableAll=True)
+
 
 def open_preferences():
     """
@@ -310,6 +337,7 @@ def open_preferences():
 
     _sIBL_GUI_For_Maya_window()
     return True
+
 
 def launch_application():
     """
@@ -322,7 +350,8 @@ def launch_application():
     executable_path = cmds.optionVar(q="sIBL_GUI_executablePath")
     if executable_path:
         if platform.system() == "Windows" or platform.system() == "Microsoft":
-            os.system("start /D" + "\"" + os.path.dirname(executable_path) + "\"" + " " + executable_path.replace(" ", "\" \""))
+            os.system("start /D" + "\"" + os.path.dirname(executable_path) +
+                      "\"" + " " + executable_path.replace(" ", "\" \""))
         elif platform.system() == "Darwin":
             os.system("open -a " + executable_path.replace(" ", "\ "))
         elif platform.system() == "Linux":
@@ -330,8 +359,11 @@ def launch_application():
         return True
     else:
         mel.eval("warning(\"sIBL_GUI | No sIBL_GUI executable path defined!\");")
-        cmds.confirmDialog(title="sIBL_GUI | Warning", message="No sIBL_GUI executable path defined!\nPlease define one in preferences!", button=["Ok"], defaultButton="Ok")
+        cmds.confirmDialog(title="sIBL_GUI | Warning",
+                           message="No sIBL_GUI executable path defined!\nPlease define one in preferences!", button=[
+                "Ok"], defaultButton="Ok")
         open_preferences()
+
 
 def execute_loader_script():
     """
@@ -360,8 +392,11 @@ def execute_loader_script():
             mel.eval("error(\"sIBL_GUI | Loader Script doesn't exists!\");")
     else:
         mel.eval("warning(\"sIBL_GUI | No Loader Script found!\");")
-        cmds.confirmDialog(title="sIBL_GUI | Warning", message="No Loader Script found!\nPlease define one in preferences!", button=["Ok"], defaultButton="Ok")
+        cmds.confirmDialog(title="sIBL_GUI | Warning",
+                           message="No Loader Script found!\nPlease define one in preferences!", button=[
+                "Ok"], defaultButton="Ok")
         open_preferences()
+
 
 def delete_smart_ibl_nodes():
     """
@@ -384,17 +419,21 @@ def delete_smart_ibl_nodes():
                     if relative.replace("_Root", "_Support").split("|")[-1] in cmds.listRelatives(relative, ad=True):
                         prefixes.append(relative.replace("_Root", "").split("|")[-1])
         for prefix in prefixes:
-            user_choice = cmds.confirmDialog(title="sIBL_GUI", message="Nodes with following prefix : '%s' are planned for deletion! Would you like to proceed?" % prefix, button=["Yes", "No"], defaultButton="Yes", cancelButton="No", dismissString="No")
+            user_choice = cmds.confirmDialog(title="sIBL_GUI",
+                                             message="Nodes with following prefix : '%s' are planned for deletion! Would you like to proceed?" % prefix,
+                                             button=[
+                                                 "Yes", "No"], defaultButton="Yes", cancelButton="No",
+                                             dismissString="No")
             if user_choice == "Yes":
                 nodes.extend(sorted(cmds.ls(prefix + "*", l=True)))
     else:
         result = cmds.promptDialog(title="sIBL_GUI | Nodes Deletion",
-                    message="Enter scene 'Smart Ibl' Nodes prefix ( 'sIBL' ):",
-                    text="sIBL",
-                    button=["Ok", "Cancel"],
-                    defaultButton="Ok",
-                    cancelButton="Cancel",
-                    dismissString="Cancel")
+                                   message="Enter scene 'Smart Ibl' Nodes prefix ( 'sIBL' ):",
+                                   text="sIBL",
+                                   button=["Ok", "Cancel"],
+                                   defaultButton="Ok",
+                                   cancelButton="Cancel",
+                                   dismissString="Cancel")
 
         if result == "Ok":
             prefix = cmds.promptDialog(query=True, text=True)
