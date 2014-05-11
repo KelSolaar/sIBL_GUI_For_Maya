@@ -14,9 +14,6 @@
 
 """
 
-#**********************************************************************************************************************
-#***	External imports.
-#**********************************************************************************************************************
 import maya.cmds as cmds
 import maya.mel as mel
 import os
@@ -24,9 +21,6 @@ import platform
 import re
 import sys
 
-#**********************************************************************************************************************
-#***	Module attributes.
-#**********************************************************************************************************************
 __author__ = "Thomas Mansencal"
 __copyright__ = "Copyright (C) 2008 - 2014 - Thomas Mansencal"
 __license__ = "GPL V3.0 - http://www.gnu.org/licenses/"
@@ -50,9 +44,6 @@ DARWIN_RELEASE_URL = "http://kelsolaar.hdrlabs.com/?dir=./sIBL_GUI/Repository/Bu
 LINUX_RELEASE_URL = "http://kelsolaar.hdrlabs.com/?dir=./sIBL_GUI/Repository/Builds/Linux"
 APPLICATION_THREAD_URL = "http://www.hdrlabs.com/cgi-bin/forum/YaBB.pl?num=1271609371"
 
-#**********************************************************************************************************************
-#***	Module classes and definitions.
-#**********************************************************************************************************************
 class Environment(object):
 	"""
 	Defines methods to manipulate environment variables.
